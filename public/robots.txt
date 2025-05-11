@@ -1,0 +1,26 @@
+
+User-agent: *
+
+# Disallow static assets
+Disallow: /*.jpg$
+Disallow: /*.jpeg$
+Disallow: /*.png$
+Disallow: /*.gif$
+Disallow: /*.pdf$
+Disallow: /*.doc$
+Disallow: /*.js$
+Disallow: /*.css$
+Disallow: /*.ico$
+Disallow: /*.woff$
+Disallow: /*.woff2$
+Disallow: /assets/
+Disallow: /static/
+Disallow: /public/
+Disallow: /_next/
+Disallow: /_next/static/
+
+Allow: /
+Allow: /api/sitemap
+
+# Sitemap location
+Sitemap: https://tehaan.me/api/sitemap
