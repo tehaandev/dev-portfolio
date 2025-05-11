@@ -1,20 +1,26 @@
-import Link from "next/link"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { ArrowDown } from "lucide-react"
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { ArrowDown } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section id="hero" className="relative py-20 md:py-28 lg:py-36 overflow-hidden">
+    <section
+      id="hero"
+      className="relative py-20 md:py-28 lg:py-36 overflow-hidden"
+    >
       <div className="container px-4 md:px-6">
         <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_450px]">
           <div className="flex flex-col justify-center space-y-4">
             <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">Jane Doe</h1>
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+                Tehaan Perera
+              </h1>
               <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                Full Stack Developer specializing in building exceptional digital experiences. With a focus on React,
-                Node.js, and modern web technologies, I create responsive and performant applications that solve
-                real-world problems.
+                Full Stack Developer specializing in building exceptional
+                digital experiences. With a focus on React, Node.js, and modern
+                web technologies, I create responsive and performant
+                applications that solve real-world problems.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
@@ -47,5 +53,6 @@ export function HeroSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
+
