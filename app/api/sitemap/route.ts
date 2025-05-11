@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 export async function GET() {
   const staticRoutes = [
     {
-      url: "https://fosterli.com/home",
+      url: "https://tehaan.me/",
       lastModified: dayjs("11-05-2025", "DD-MM-YYYY").toISOString(),
       changeFrequency: "yearly",
       priority: 1,
