@@ -78,7 +78,7 @@ export function ContactSection() {
       formData.append("email", formState.email);
       formData.append("message", formState.message);
       setIsSubmitting(true);
-      formSubmitMutation.mutateAsync(formData);
+      await formSubmitMutation.mutateAsync(formData);
       setIsSubmitting(false);
       setIsSubmitted(true);
       toast.success("Message sent successfully!");

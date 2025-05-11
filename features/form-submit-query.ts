@@ -5,10 +5,6 @@ export const useFormSubmitAction = () => {
   return useMutation({
     mutationFn: formSubmitAction,
     mutationKey: ["formSubmit"],
-    onError: (error: unknown) => {
-      console.error("Error submitting form:", error);
-      // Handle error (e.g., show a notification)
-    },
   });
 };
 
