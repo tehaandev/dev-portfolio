@@ -104,7 +104,7 @@ export function ProjectsSection() {
                   className="object-cover transition-transform hover:scale-105"
                 />
                 {project.external && (
-                  <div className="absolute z-50 top-2 right-2 bg-black text-white text-xs font-medium py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="absolute z-50 top-2 right-2 bg-black/60 text-white text-xs font-medium py-1 px-2 rounded opacity-0 max-md:opacity-100 md:group-hover:opacity-100 transition-opacity">
                     Professional Work
                   </div>
                 )}
