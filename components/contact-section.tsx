@@ -15,6 +15,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { CheckCircle, Linkedin, Mail, MapPin, Send } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { useFormSubmitAction } from "@/features/form-submit-query";
+import { toast } from "sonner";
 
 export function ContactSection() {
   const [formState, setFormState] = useState({
@@ -63,24 +65,28 @@ export function ContactSection() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const formSubmitMutation = useFormSubmitAction();
+  const handleSubmit = async (e: React.FormEvent) => {
+    setIsSubmitted(false);
+    setErrors({});
+    try {
+      e.preventDefault();
 
-    if (!validateForm()) return;
-
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    setTimeout(() => {
+      if (!validateForm()) return;
+      const formData = new FormData();
+      formData.append("name", formState.name);
+      formData.append("email", formState.email);
+      formData.append("message", formState.message);
+      setIsSubmitting(true);
+      formSubmitMutation.mutateAsync(formData);
       setIsSubmitting(false);
       setIsSubmitted(true);
-      setFormState({ name: "", email: "", message: "" });
-
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 5000);
-    }, 1500);
+      toast.success("Message sent successfully!");
+    } catch (error) {
+      setIsSubmitting(false);
+      console.error(error);
+      toast.error("Error sending message. Please try again later.");
+    }
   };
 
   return (

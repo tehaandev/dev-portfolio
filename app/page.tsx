@@ -4,6 +4,7 @@ import { SkillsSection } from "@/components/skills-section";
 import { ContactSection } from "@/components/contact-section";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import ReactQueryProvider from "@/components/ReactQueryProvider";
 
 export default function Home() {
   return (
@@ -13,7 +14,9 @@ export default function Home() {
         <HeroSection />
         <ProjectsSection />
         <SkillsSection />
-        <ContactSection />
+        <ReactQueryProvider>
+          <ContactSection />
+        </ReactQueryProvider>
       </main>
       <Footer />
     </div>
