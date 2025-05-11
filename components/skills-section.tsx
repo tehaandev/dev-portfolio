@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card";
 
 const skillCategories = [
   {
@@ -11,16 +11,15 @@ const skillCategories = [
       { name: "React", icon: "⚛️" },
       { name: "Next.js", icon: "▲" },
       { name: "Tailwind CSS", icon: "🌊" },
-      { name: "Redux", icon: "🔄" },
+      { name: "Zustand", icon: "🔄" },
     ],
   },
   {
     name: "Backend",
     skills: [
       { name: "Node.js", icon: "🟢" },
+      { name: "NestJS", icon: "🔴" },
       { name: "Express", icon: "🚂" },
-      { name: "Python", icon: "🐍" },
-      { name: "Django", icon: "🎯" },
       { name: "GraphQL", icon: "⚡" },
       { name: "REST API", icon: "🔌" },
     ],
@@ -48,7 +47,7 @@ const skillCategories = [
       { name: "Cypress", icon: "🧪" },
     ],
   },
-]
+];
 
 export function SkillsSection() {
   return (
@@ -56,7 +55,9 @@ export function SkillsSection() {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
           <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">My Skills</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+              My Skills
+            </h2>
             <p className="max-w-[700px] text-muted-foreground md:text-xl">
               Technologies and tools I work with on a regular basis.
             </p>
@@ -86,5 +87,6 @@ export function SkillsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
+
