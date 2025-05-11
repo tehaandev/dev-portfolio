@@ -7,11 +7,11 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative py-20 md:py-28 lg:py-36 overflow-hidden"
+      className="relative py-10 md:py-28 lg:py-36 overflow-hidden"
     >
       <div className="container px-4 md:px-6">
         <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_450px]">
-          <div className="flex flex-col justify-center space-y-4 flex-wrap-reverse">
+          <div className="flex flex-col justify-center space-y-4 order-2 lg:order-1">
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
                 Tehaan Perera
@@ -35,7 +35,7 @@ export function HeroSection() {
               </Button>
             </div>
           </div>
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center order-1 lg:order-2">
             <div className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] lg:w-[400px] lg:h-[400px] rounded-full overflow-hidden border-4 border-background shadow-xl">
               <Image
                 src="/tp.jpg?height=400&width=400"
