@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/profile-og.png", // Create this image - 1200x630px recommended
+        url: "/tp-og-image.jpg", // Create this image - 1200x630px recommended
         width: 1200,
         height: 630,
         alt: "Tehaan Perera - Software Developer",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     description:
       "Full-stack developer specializing in modern web technologies.",
     creator: "@yourtwitterhandle",
-    images: ["/images/profile-og.png"],
+    images: ["/tp-og-image.jpg"],
   },
 
   // Canonical URL

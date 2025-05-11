@@ -17,10 +17,13 @@ export function HeroSection() {
                 Tehaan Perera
               </h1>
               <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                Full Stack Developer specializing in building exceptional
-                digital experiences. With a focus on React, Node.js, and modern
-                web technologies, I create responsive and performant
-                applications that solve real-world problems.
+                {`Full Stack Developer crafting fast, scalable, and user-centric
+                web applications. With a strong foundation in React, Node.js,
+                and modern frameworks like Next.js, I build robust solutions
+                that prioritize performance, intuitive UX, and clean
+                architecture. Whether it's real-time dashboards or complex
+                form-driven platforms, I focus on solving real-world problems
+                with practical, elegant code.`}
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
@@ -35,8 +38,8 @@ export function HeroSection() {
           <div className="flex items-center justify-center">
             <div className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] lg:w-[400px] lg:h-[400px] rounded-full overflow-hidden border-4 border-background shadow-xl">
               <Image
-                src="/placeholder.svg?height=400&width=400"
-                alt="Jane Doe"
+                src="/tp.jpg?height=400&width=400"
+                alt="Tehaan Perera"
                 fill
                 className="object-cover"
                 priority
