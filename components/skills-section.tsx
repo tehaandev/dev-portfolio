@@ -10,6 +10,7 @@ import {
   SiMongodb,
   SiMysql,
   SiNestjs,
+  SiNextdotjs,
   SiPostgresql,
   SiPrisma,
 } from "react-icons/si";
@@ -24,7 +25,10 @@ const skillCategories = [
       { name: "JavaScript", icon: "📜" },
       { name: "TypeScript", icon: "📘" },
       { name: "React", icon: <FaReact className="h-4 w-4 text-[#61DAFB]" /> },
-      { name: "Next.js", icon: "▲" },
+      {
+        name: "Next.js",
+        icon: <SiNextdotjs className="h-4 w-4 text-[#000000]" />,
+      },
       { name: "Tailwind CSS", icon: "🌊" },
       { name: "Zustand", icon: "🔄" },
     ],
