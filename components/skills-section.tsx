@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { FaCss3, FaHtml5, FaNodeJs, FaReact } from "react-icons/fa6";
 import {
+  SiAwslambda,
   SiCypress,
   SiDocker,
   SiExpress,
@@ -17,6 +18,7 @@ import {
   SiPostgresql,
   SiPrisma,
   SiReacthookform,
+  SiRedis,
   SiTailwindcss,
   SiTypescript,
   SiVercel,
@@ -71,6 +73,10 @@ const skillCategories = [
         icon: <SiGraphql className="h-4 w-4 text-[#E10098]" />,
       },
       { name: "REST API", icon: "🔌" },
+      {
+        name: "AWS Lambda",
+        icon: <SiAwslambda className="h-4 w-4 text-[#FF9900]" />,
+      },
     ],
   },
   {
@@ -90,6 +96,7 @@ const skillCategories = [
         icon: <SiFirebase className="h-4 w-4 text-[#FFCA28]" />,
       },
       { name: "Prisma", icon: <SiPrisma className="h-4 w-4 text-[#2D3748]" /> },
+      { name: "Redis", icon: <SiRedis className="h-4 w-4 text-[#D82C20]" /> },
     ],
   },
   {
