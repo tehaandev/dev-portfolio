@@ -30,7 +30,7 @@ export function Footer() {
             <Linkedin className="h-5 w-5" />
           </Link>
           <Link
-            href="https://twitter.com"
+            href="https://x.com/tehaandev"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-foreground"
