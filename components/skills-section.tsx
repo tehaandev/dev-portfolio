@@ -1,14 +1,29 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { FaCss3, FaHtml5, FaNodeJs, FaReact } from "react-icons/fa6";
+import {
+  SiDocker,
+  SiExpress,
+  SiFirebase,
+  SiGit,
+  SiGithub,
+  SiGraphql,
+  SiMongodb,
+  SiMysql,
+  SiNestjs,
+  SiPostgresql,
+  SiPrisma,
+} from "react-icons/si";
+import { TbCloudComputing } from "react-icons/tb";
 
 const skillCategories = [
   {
     name: "Frontend",
     skills: [
-      { name: "HTML5", icon: "🌐" },
-      { name: "CSS3", icon: "🎨" },
+      { name: "HTML5", icon: <FaHtml5 className="h-4 w-4 text-[#E34F26]" /> },
+      { name: "CSS3", icon: <FaCss3 className="h-4 w-4 text-[#1572B6]" /> },
       { name: "JavaScript", icon: "📜" },
       { name: "TypeScript", icon: "📘" },
-      { name: "React", icon: "⚛️" },
+      { name: "React", icon: <FaReact className="h-4 w-4 text-[#61DAFB]" /> },
       { name: "Next.js", icon: "▲" },
       { name: "Tailwind CSS", icon: "🌊" },
       { name: "Zustand", icon: "🔄" },
@@ -17,30 +32,51 @@ const skillCategories = [
   {
     name: "Backend",
     skills: [
-      { name: "Node.js", icon: "🟢" },
-      { name: "NestJS", icon: "🔴" },
-      { name: "Express", icon: "🚂" },
-      { name: "GraphQL", icon: "⚡" },
+      {
+        name: "Node.js",
+        icon: <FaNodeJs className="h-4 w-4 text-[#5FA04E]" />,
+      },
+      { name: "NestJS", icon: <SiNestjs className="h-4 w-4 text-[#E0234E]" /> },
+      {
+        name: "Express",
+        icon: <SiExpress className="h-4 w-4 text-[#000000]" />,
+      },
+      {
+        name: "GraphQL",
+        icon: <SiGraphql className="h-4 w-4 text-[#E10098]" />,
+      },
       { name: "REST API", icon: "🔌" },
     ],
   },
   {
     name: "Database",
     skills: [
-      { name: "MongoDB", icon: "🍃" },
-      { name: "PostgreSQL", icon: "🐘" },
-      { name: "MySQL", icon: "🐬" },
-      { name: "Firebase", icon: "🔥" },
-      { name: "Prisma", icon: "📊" },
+      {
+        name: "MongoDB",
+        icon: <SiMongodb className="h-4 w-4 text-[#47A248]" />,
+      },
+      {
+        name: "PostgreSQL",
+        icon: <SiPostgresql className="h-4 w-4 text-[#336791]" />,
+      },
+      { name: "MySQL", icon: <SiMysql className="h-4 w-4 text-[#4479A1]" /> },
+      {
+        name: "Firebase",
+        icon: <SiFirebase className="h-4 w-4 text-[#FFCA28]" />,
+      },
+      { name: "Prisma", icon: <SiPrisma className="h-4 w-4 text-[#2D3748]" /> },
     ],
   },
   {
     name: "DevOps & Tools",
     skills: [
-      { name: "Git", icon: "📚" },
-      { name: "GitHub", icon: "🐙" },
-      { name: "Docker", icon: "🐳" },
-      { name: "AWS", icon: "☁️" },
+      { name: "Git", icon: <SiGit className="h-4 w-4 text-[#F05032]" /> },
+      { name: "GitHub", icon: <SiGithub className="h-4 w-4 text-[#181717]" /> },
+      { name: "Docker", icon: <SiDocker className="h-4 w-4 text-[#2496ED]" /> },
+      {
+        name: "AWS",
+        icon: <TbCloudComputing className="h-4 w-4 text-[#FF9900]" />,
+      },
       { name: "Vercel", icon: "▲" },
       { name: "CI/CD", icon: "🔄" },
       { name: "Jest", icon: "🃏" },

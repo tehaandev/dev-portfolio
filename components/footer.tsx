@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
+import { FaGithub, FaXTwitter } from "react-icons/fa6";
 
 export function Footer() {
   return (
@@ -17,7 +18,7 @@ export function Footer() {
             className="text-muted-foreground hover:text-foreground"
             aria-label="GitHub"
           >
-            <Github className="h-5 w-5" />
+            <FaGithub className="h-5 w-5" />
           </Link>
           <Link
             href="https://www.linkedin.com/in/tehaan-perera/"
@@ -28,15 +29,15 @@ export function Footer() {
           >
             <Linkedin className="h-5 w-5" />
           </Link>
-          {/* <Link
+          <Link
             href="https://twitter.com"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-foreground"
             aria-label="Twitter"
           >
-            <Twitter className="h-5 w-5" />
-          </Link> */}
+            <FaXTwitter className="h-5 w-5" />
+          </Link>
           <Link
             href="mailto:hello@tehaan.me"
             className="text-muted-foreground hover:text-foreground"
