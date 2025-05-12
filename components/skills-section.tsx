@@ -1,18 +1,25 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { FaCss3, FaHtml5, FaNodeJs, FaReact } from "react-icons/fa6";
 import {
+  SiCypress,
   SiDocker,
   SiExpress,
   SiFirebase,
   SiGit,
   SiGithub,
   SiGraphql,
+  SiJavascript,
+  SiJest,
   SiMongodb,
   SiMysql,
   SiNestjs,
   SiNextdotjs,
   SiPostgresql,
   SiPrisma,
+  SiReacthookform,
+  SiTailwindcss,
+  SiTypescript,
+  SiVercel,
 } from "react-icons/si";
 import { TbCloudComputing } from "react-icons/tb";
 
@@ -22,15 +29,29 @@ const skillCategories = [
     skills: [
       { name: "HTML5", icon: <FaHtml5 className="h-4 w-4 text-[#E34F26]" /> },
       { name: "CSS3", icon: <FaCss3 className="h-4 w-4 text-[#1572B6]" /> },
-      { name: "JavaScript", icon: "📜" },
-      { name: "TypeScript", icon: "📘" },
+      {
+        name: "JavaScript",
+        icon: <SiJavascript className="h-4 w-4 text-[#F7DF1E]" />,
+      },
+      {
+        name: "TypeScript",
+        icon: <SiTypescript className="h-4 w-4 text-[#007ACC]" />,
+      },
       { name: "React", icon: <FaReact className="h-4 w-4 text-[#61DAFB]" /> },
       {
         name: "Next.js",
         icon: <SiNextdotjs className="h-4 w-4 text-[#000000]" />,
       },
-      { name: "Tailwind CSS", icon: "🌊" },
+      {
+        name: "Tailwind CSS",
+        icon: <SiTailwindcss className="h-4 w-4 text-[#06B6D4]" />,
+      },
       { name: "Zustand", icon: "🔄" },
+      { name: "React Query", icon: "🏝️" },
+      {
+        name: "React Hook Form",
+        icon: <SiReacthookform className="h-4 w-4 text-[#E3342F]" />,
+      },
     ],
   },
   {
@@ -81,10 +102,13 @@ const skillCategories = [
         name: "AWS",
         icon: <TbCloudComputing className="h-4 w-4 text-[#FF9900]" />,
       },
-      { name: "Vercel", icon: "▲" },
+      { name: "Vercel", icon: <SiVercel className="h-4 w-4 text-[#000000]" /> },
       { name: "CI/CD", icon: "🔄" },
-      { name: "Jest", icon: "🃏" },
-      { name: "Cypress", icon: "🧪" },
+      { name: "Jest", icon: <SiJest className="h-4 w-4 text-[#C21325]" /> },
+      {
+        name: "Cypress",
+        icon: <SiCypress className="h-4 w-4 text-[#17202C]" />,
+      },
     ],
   },
 ];
