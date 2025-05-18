@@ -39,7 +39,10 @@ const skillCategories = [
         name: "TypeScript",
         icon: <SiTypescript className="h-4 w-4 text-[#007ACC]" />,
       },
-      { name: "React", icon: <FaReact className="h-4 w-4 text-[#61DAFB]" /> },
+      {
+        name: "React.js",
+        icon: <FaReact className="h-4 w-4 text-[#61DAFB]" />,
+      },
       {
         name: "Next.js",
         icon: <SiNextdotjs className="h-4 w-4 text-[#000000]" />,
