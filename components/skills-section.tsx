@@ -1,7 +1,10 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { FaCss3, FaHtml5, FaNodeJs, FaReact } from "react-icons/fa6";
+import { Infinity } from "lucide-react";
 import {
+  SiAmazonwebservices,
   SiAwslambda,
+  SiAxios,
+  SiCss3,
   SiCypress,
   SiDocker,
   SiExpress,
@@ -9,28 +12,31 @@ import {
   SiGit,
   SiGithub,
   SiGraphql,
+  SiHtml5,
   SiJavascript,
   SiJest,
   SiMongodb,
   SiMysql,
   SiNestjs,
   SiNextdotjs,
+  SiNodedotjs,
   SiPostgresql,
   SiPrisma,
+  SiReact,
   SiReacthookform,
+  SiReactquery,
   SiRedis,
   SiTailwindcss,
   SiTypescript,
   SiVercel,
 } from "react-icons/si";
-import { TbCloudComputing } from "react-icons/tb";
 
 const skillCategories = [
   {
     name: "Frontend",
     skills: [
-      { name: "HTML5", icon: <FaHtml5 className="h-4 w-4 text-[#E34F26]" /> },
-      { name: "CSS3", icon: <FaCss3 className="h-4 w-4 text-[#1572B6]" /> },
+      { name: "HTML5", icon: <SiHtml5 className="h-4 w-4 text-[#E34F26]" /> },
+      { name: "CSS3", icon: <SiCss3 className="h-4 w-4 text-[#1572B6]" /> },
       {
         name: "JavaScript",
         icon: <SiJavascript className="h-4 w-4 text-[#F7DF1E]" />,
@@ -41,7 +47,7 @@ const skillCategories = [
       },
       {
         name: "React.js",
-        icon: <FaReact className="h-4 w-4 text-[#61DAFB]" />,
+        icon: <SiReact className="h-4 w-4 text-[#61DAFB]" />,
       },
       {
         name: "Next.js",
@@ -52,7 +58,10 @@ const skillCategories = [
         icon: <SiTailwindcss className="h-4 w-4 text-[#06B6D4]" />,
       },
       { name: "Zustand", icon: "🔄" },
-      { name: "React Query", icon: "🏝️" },
+      {
+        name: "React Query",
+        icon: <SiReactquery className="h-4 w-4 text-[#FF4154]" />,
+      },
       {
         name: "React Hook Form",
         icon: <SiReacthookform className="h-4 w-4 text-[#E3342F]" />,
@@ -64,7 +73,7 @@ const skillCategories = [
     skills: [
       {
         name: "Node.js",
-        icon: <FaNodeJs className="h-4 w-4 text-[#5FA04E]" />,
+        icon: <SiNodedotjs className="h-4 w-4 text-[#5FA04E]" />,
       },
       { name: "NestJS", icon: <SiNestjs className="h-4 w-4 text-[#E0234E]" /> },
       {
@@ -75,7 +84,10 @@ const skillCategories = [
         name: "GraphQL",
         icon: <SiGraphql className="h-4 w-4 text-[#E10098]" />,
       },
-      { name: "REST API", icon: "🔌" },
+      {
+        name: "REST API",
+        icon: <SiAxios className="h-4 w-4 text-[#5A29E3]" />,
+      },
       {
         name: "AWS Lambda",
         icon: <SiAwslambda className="h-4 w-4 text-[#FF9900]" />,
@@ -110,10 +122,13 @@ const skillCategories = [
       { name: "Docker", icon: <SiDocker className="h-4 w-4 text-[#2496ED]" /> },
       {
         name: "AWS",
-        icon: <TbCloudComputing className="h-4 w-4 text-[#FF9900]" />,
+        icon: <SiAmazonwebservices className="h-4 w-4 text-[#FF9900]" />,
       },
       { name: "Vercel", icon: <SiVercel className="h-4 w-4 text-[#000000]" /> },
-      { name: "CI/CD", icon: "🔄" },
+      {
+        name: "CI/CD",
+        icon: <Infinity className="h-4 w-4 text-[#4B5563]" />,
+      },
       { name: "Jest", icon: <SiJest className="h-4 w-4 text-[#C21325]" /> },
       {
         name: "Cypress",
