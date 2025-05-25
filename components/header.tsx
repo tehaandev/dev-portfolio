@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,34 +29,48 @@ export function Header() {
         </button>
 
         {/* Desktop navigation */}
-        <nav className="hidden md:flex gap-6">
-          <Link href="#hero" className="text-sm font-medium hover:text-primary">
-            Home
-          </Link>
-          <Link
-            href="#projects"
-            className="text-sm font-medium hover:text-primary"
-          >
-            Projects
-          </Link>
-          <Link
-            href="#skills"
-            className="text-sm font-medium hover:text-primary"
-          >
-            Skills
-          </Link>
-          <Link
-            href="#contact"
-            className="text-sm font-medium hover:text-primary"
-          >
-            Contact
-          </Link>
-        </nav>
+        <div className="hidden md:flex items-center gap-6">
+          <nav className="flex gap-6">
+            <Link
+              href="#hero"
+              className="text-sm font-medium hover:text-primary"
+            >
+              Home
+            </Link>
+            <Link
+              href="#projects"
+              className="text-sm font-medium hover:text-primary"
+            >
+              Projects
+            </Link>
+            <Link
+              href="#skills"
+              className="text-sm font-medium hover:text-primary"
+            >
+              Skills
+            </Link>
+            <Link
+              href="#contact"
+              className="text-sm font-medium hover:text-primary"
+            >
+              Contact
+            </Link>
+          </nav>
+          <Button size="sm" asChild>
+            <Link
+              href="https://calendar.app.google/7VhtRKka3953z2hq5"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Schedule Call
+            </Link>
+          </Button>
+        </div>
 
         {/* Mobile navigation */}
         {isMenuOpen && (
           <div className="absolute top-16 left-0 right-0 bg-background border-b md:hidden">
-            <nav className="flex flex-col p-4">
+            <nav className="flex flex-col p-4 space-y-2">
               <Link
                 href="#hero"
                 className="py-2 text-sm font-medium hover:text-primary"
@@ -84,6 +99,16 @@ export function Header() {
               >
                 Contact
               </Link>
+              <Button size="sm" asChild className="mt-2">
+                <Link
+                  href="https://calendar.app.google/7VhtRKka3953z2hq5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Schedule Call
+                </Link>
+              </Button>
             </nav>
           </div>
         )}

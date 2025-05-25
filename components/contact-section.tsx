@@ -12,7 +12,14 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { CheckCircle, Linkedin, Mail, MapPin, Send } from "lucide-react";
+import {
+  CalendarDays,
+  CheckCircle,
+  Linkedin,
+  Mail,
+  MapPin,
+  Send,
+} from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { useFormSubmitAction } from "@/features/form-submit-query";
@@ -119,10 +126,6 @@ export function ContactSection() {
                 </Link>
               </div>
 
-              {/* <div className="flex items-center gap-3">
-                <Phone className="h-5 w-5 text-muted-foreground" />
-                <p>+1 (555) 123-4567</p>
-              </div> */}
               <div className="flex items-center gap-3">
                 <MapPin className="h-5 w-5 text-muted-foreground" />
                 <p>Sri Lanka</p>
@@ -136,6 +139,17 @@ export function ContactSection() {
                   rel="noopener noreferrer"
                 >
                   <p>in/tehaan-perera</p>
+                </Link>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <CalendarDays className="h-5 w-5 text-muted-foreground" />
+                <Link
+                  href={"https://calendar.app.google/7VhtRKka3953z2hq5"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <p>Schedule a Call</p>
                 </Link>
               </div>
             </CardContent>
