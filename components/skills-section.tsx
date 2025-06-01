@@ -57,7 +57,10 @@ const skillCategories = [
         name: "Tailwind CSS",
         icon: <SiTailwindcss className="h-4 w-4 text-[#06B6D4]" />,
       },
-      { name: "Zustand", icon: "🔄" },
+      {
+        name: "Zustand",
+        icon: <span className="text-sm flex items-center">🔄</span>,
+      },
       {
         name: "React Query",
         icon: <SiReactquery className="h-4 w-4 text-[#FF4154]" />,
