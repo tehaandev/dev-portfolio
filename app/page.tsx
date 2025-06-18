@@ -3,6 +3,7 @@ import { Footer } from "@/components/footer";
 import ReactQueryProvider from "@/components/ReactQueryProvider";
 import { HeroSection } from "@/components/hero-section";
 import { Suspense, lazy } from "react";
+import { FadeIn } from "@/components/FadeIn";
 
 // Lazy load components that are not immediately visible
 const ProjectsSection = lazy(() =>
@@ -122,19 +123,27 @@ export default function Home() {
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-grow mx-auto">
-        <HeroSection />
+        <FadeIn>
+          <HeroSection />
+        </FadeIn>
 
         <Suspense fallback={<ProjectsSkeleton />}>
-          <ProjectsSection />
+          <FadeIn>
+            <ProjectsSection />
+          </FadeIn>
         </Suspense>
 
         <Suspense fallback={<SkillsSkeleton />}>
-          <SkillsSection />
+          <FadeIn>
+            <SkillsSection />
+          </FadeIn>
         </Suspense>
 
         <ReactQueryProvider>
           <Suspense fallback={<ContactSkeleton />}>
-            <ContactSection />
+            <FadeIn>
+              <ContactSection />
+            </FadeIn>
           </Suspense>
         </ReactQueryProvider>
       </main>
