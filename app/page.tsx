@@ -2,13 +2,24 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import ReactQueryProvider from "@/components/ReactQueryProvider";
 import { HeroSection } from "@/components/hero-section";
-import { LazySection } from "@/components/ui/lazy-section";
 import { Suspense, lazy } from "react";
 
 // Lazy load components that are not immediately visible
-const ProjectsSection = lazy(() => import("@/components/projects-section").then(mod => ({ default: mod.ProjectsSection })));
-const SkillsSection = lazy(() => import("@/components/skills-section").then(mod => ({ default: mod.SkillsSection })));
-const ContactSection = lazy(() => import("@/components/contact-section").then(mod => ({ default: mod.ContactSection })));
+const ProjectsSection = lazy(() =>
+  import("@/components/projects-section").then((mod) => ({
+    default: mod.ProjectsSection,
+  }))
+);
+const SkillsSection = lazy(() =>
+  import("@/components/skills-section").then((mod) => ({
+    default: mod.SkillsSection,
+  }))
+);
+const ContactSection = lazy(() =>
+  import("@/components/contact-section").then((mod) => ({
+    default: mod.ContactSection,
+  }))
+);
 
 // Specialized loading fallbacks
 function ProjectsSkeleton() {
@@ -21,7 +32,10 @@ function ProjectsSkeleton() {
         </div>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {[...Array(3)].map((_, i) => (
-            <div key={i} className="bg-white rounded-lg border-2 overflow-hidden">
+            <div
+              key={i}
+              className="bg-white rounded-lg border-2 overflow-hidden"
+            >
               <div className="aspect-video bg-gray-200 loading-skeleton"></div>
               <div className="p-6 space-y-4">
                 <div className="h-6 bg-gray-200 rounded loading-skeleton"></div>
@@ -29,7 +43,10 @@ function ProjectsSkeleton() {
                 <div className="h-4 bg-gray-200 rounded w-3/4 loading-skeleton"></div>
                 <div className="flex gap-2">
                   {[...Array(4)].map((_, j) => (
-                    <div key={j} className="h-6 w-16 bg-gray-200 rounded-full loading-skeleton"></div>
+                    <div
+                      key={j}
+                      className="h-6 w-16 bg-gray-200 rounded-full loading-skeleton"
+                    ></div>
                   ))}
                 </div>
               </div>
@@ -55,7 +72,10 @@ function SkillsSkeleton() {
               <div className="h-6 bg-gray-200 rounded mb-4 loading-skeleton"></div>
               <div className="grid grid-cols-4 gap-4">
                 {[...Array(8)].map((_, j) => (
-                  <div key={j} className="h-12 bg-gray-200 rounded loading-skeleton"></div>
+                  <div
+                    key={j}
+                    className="h-12 bg-gray-200 rounded loading-skeleton"
+                  ></div>
                 ))}
               </div>
             </div>
@@ -104,36 +124,18 @@ export default function Home() {
       <main className="flex-grow mx-auto">
         <HeroSection />
 
-        <LazySection
-          fallback={<ProjectsSkeleton />}
-          threshold={0.1}
-          rootMargin="150px"
-        >
-          <Suspense fallback={<ProjectsSkeleton />}>
-            <ProjectsSection />
-          </Suspense>
-        </LazySection>
+        <Suspense fallback={<ProjectsSkeleton />}>
+          <ProjectsSection />
+        </Suspense>
 
-        <LazySection
-          fallback={<SkillsSkeleton />}
-          threshold={0.1}
-          rootMargin="150px"
-        >
-          <Suspense fallback={<SkillsSkeleton />}>
-            <SkillsSection />
-          </Suspense>
-        </LazySection>
+        <Suspense fallback={<SkillsSkeleton />}>
+          <SkillsSection />
+        </Suspense>
 
         <ReactQueryProvider>
-          <LazySection
-            fallback={<ContactSkeleton />}
-            threshold={0.1}
-            rootMargin="150px"
-          >
-            <Suspense fallback={<ContactSkeleton />}>
-              <ContactSection />
-            </Suspense>
-          </LazySection>
+          <Suspense fallback={<ContactSkeleton />}>
+            <ContactSection />
+          </Suspense>
         </ReactQueryProvider>
       </main>
       <Footer />
