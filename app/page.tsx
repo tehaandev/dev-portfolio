@@ -4,6 +4,8 @@ import ReactQueryProvider from "@/components/ReactQueryProvider";
 import { HeroSection } from "@/components/hero-section";
 import { Suspense, lazy } from "react";
 import { FadeIn } from "@/components/FadeIn";
+import { CredentialsSection } from "@/components/credentials-section";
+import { ExperienceSection } from "@/components/experience-section";
 
 // Lazy load components that are not immediately visible
 const ProjectsSection = lazy(() =>
@@ -26,7 +28,7 @@ const ContactSection = lazy(() =>
 function ProjectsSkeleton() {
   return (
     <section className="py-16 md:py-24 bg-muted/50">
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:px-6 mx-auto">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
           <div className="h-12 bg-gray-200 rounded-md w-80 mx-auto loading-skeleton"></div>
           <div className="h-6 bg-gray-200 rounded-md w-96 mx-auto loading-skeleton"></div>
@@ -62,7 +64,7 @@ function ProjectsSkeleton() {
 function SkillsSkeleton() {
   return (
     <section className="py-16 md:py-24">
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:px-6 mx-auto">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
           <div className="h-12 bg-gray-200 rounded-md w-80 mx-auto loading-skeleton"></div>
           <div className="h-6 bg-gray-200 rounded-md w-96 mx-auto loading-skeleton"></div>
@@ -90,7 +92,7 @@ function SkillsSkeleton() {
 function ContactSkeleton() {
   return (
     <section className="py-16 md:py-24 bg-muted/50">
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:px-6 mx-auto">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
           <div className="h-12 bg-gray-200 rounded-md w-80 mx-auto loading-skeleton"></div>
           <div className="h-6 bg-gray-200 rounded-md w-96 mx-auto loading-skeleton"></div>
@@ -122,7 +124,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="flex-grow mx-auto">
+      <main className="flex-grow mx-auto w-full">
         <FadeIn>
           <HeroSection />
         </FadeIn>
@@ -130,6 +132,18 @@ export default function Home() {
         <Suspense fallback={<ProjectsSkeleton />}>
           <FadeIn>
             <ProjectsSection />
+          </FadeIn>
+        </Suspense>
+
+        <Suspense fallback={<SkillsSkeleton />}>
+          <FadeIn>
+            <ExperienceSection />
+          </FadeIn>
+        </Suspense>
+
+        <Suspense fallback={<SkillsSkeleton />}>
+          <FadeIn>
+            <CredentialsSection />
           </FadeIn>
         </Suspense>
 

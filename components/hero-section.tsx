@@ -9,7 +9,7 @@ export function HeroSection() {
       id="hero"
       className="relative py-10 md:py-28 lg:py-36 overflow-hidden"
     >
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:px-6 mx-auto">
         <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_450px]">
           <div className="flex flex-col justify-center space-y-4 order-2 lg:order-1">
             <div className="space-y-2">

@@ -12,6 +12,20 @@ export function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // const scrollToSection = (
+  //   e: React.MouseEvent<HTMLAnchorElement>,
+  //   id: string
+  // ) => {
+  //   e.preventDefault();
+  //   const element = document.getElementById(id);
+  //   if (element) {
+  //     element.scrollIntoView({ behavior: "smooth" });
+  //   }
+  //   if (isMenuOpen) {
+  //     setIsMenuOpen(false);
+  //   }
+  // };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 md:px-6 flex h-16 items-center justify-between max-md:p-3">
@@ -50,6 +64,18 @@ export function Header() {
               Skills
             </Link>
             <Link
+              href="#credentials"
+              className="text-sm font-medium hover:text-primary"
+            >
+              Credentials
+            </Link>
+            <Link
+              href="#experience"
+              className="text-sm font-medium hover:text-primary"
+            >
+              Experience
+            </Link>
+            <Link
               href="#contact"
               className="text-sm font-medium hover:text-primary"
             >
@@ -68,50 +94,68 @@ export function Header() {
         </div>
 
         {/* Mobile navigation */}
-        {isMenuOpen && (
-          <div className="absolute top-16 left-0 right-0 bg-background border-b md:hidden">
-            <nav className="flex flex-col p-4 space-y-2">
+        <div
+          className={`absolute top-16 left-0 right-0 bg-background border-b md:hidden transition-transform duration-300 ease-in-out transform ${
+            isMenuOpen
+              ? "translate-y-0 opacity-100"
+              : "-translate-y-full opacity-0 pointer-events-none"
+          }`}
+        >
+          <nav className="flex flex-col p-4 space-y-2">
+            <Link
+              href="#hero"
+              className="py-2 text-sm font-medium hover:text-primary"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Home
+            </Link>
+            <Link
+              href="#projects"
+              className="py-2 text-sm font-medium hover:text-primary"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Projects
+            </Link>
+            <Link
+              href="#skills"
+              className="py-2 text-sm font-medium hover:text-primary"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Skills
+            </Link>
+            <Link
+              href="#credentials"
+              className="py-2 text-sm font-medium hover:text-primary"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Credentials
+            </Link>
+            <Link
+              href="#experience"
+              className="py-2 text-sm font-medium hover:text-primary"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Experience
+            </Link>
+            <Link
+              href="#contact"
+              className="py-2 text-sm font-medium hover:text-primary"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Contact
+            </Link>
+            <Button size="sm" asChild className="mt-2">
               <Link
-                href="#hero"
-                className="py-2 text-sm font-medium hover:text-primary"
+                href="https://calendar.app.google/7VhtRKka3953z2hq5"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Home
+                Schedule Call
               </Link>
-              <Link
-                href="#projects"
-                className="py-2 text-sm font-medium hover:text-primary"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Projects
-              </Link>
-              <Link
-                href="#skills"
-                className="py-2 text-sm font-medium hover:text-primary"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Skills
-              </Link>
-              <Link
-                href="#contact"
-                className="py-2 text-sm font-medium hover:text-primary"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Contact
-              </Link>
-              <Button size="sm" asChild className="mt-2">
-                <Link
-                  href="https://calendar.app.google/7VhtRKka3953z2hq5"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Schedule Call
-                </Link>
-              </Button>
-            </nav>
-          </div>
-        )}
+            </Button>
+          </nav>
+        </div>
       </div>
     </header>
   );
