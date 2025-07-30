@@ -4,7 +4,7 @@ export async function GET() {
   const staticRoutes = [
     {
       url: "https://tehaan.me/",
-      lastModified: dayjs("30-07-2025", "DD-MM-YYYY").toISOString(),
+      lastModified: dayjs("2025-07-30").toISOString(), // Use ISO format for consistent parsing
       changeFrequency: "yearly",
       priority: 1,
     },
