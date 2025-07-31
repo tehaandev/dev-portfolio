@@ -18,8 +18,8 @@ const experiences = [
     type: "Freelance",
     description: [
       "Developed a full-stack web application to automate foster care processes, enhancing efficiency and user experience.",
-      "Implemented secure JWT-based authentication for data protection.",
       "Designed a dynamic multi-step form system for improved data collection.",
+      "Implemented field-level assignments, enabling assessors to assign specific form fields to foster carers for completion and submission.",
       "Integrated real-time WebSocket notifications for enhanced user engagement.",
     ],
     technologies: [
