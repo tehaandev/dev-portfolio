@@ -1,11 +1,9 @@
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
-import ReactQueryProvider from "@/components/ReactQueryProvider";
-import { HeroSection } from "@/components/hero-section";
-import { Suspense, lazy } from "react";
 import { FadeIn } from "@/components/FadeIn";
+import ReactQueryProvider from "@/components/ReactQueryProvider";
 import { CredentialsSection } from "@/components/credentials-section";
 import { ExperienceSection } from "@/components/experience-section";
+import { HeroSection } from "@/components/hero-section";
+import { Suspense, lazy } from "react";
 
 // Lazy load components that are not immediately visible
 const ProjectsSection = lazy(() =>
@@ -123,7 +121,6 @@ function ContactSkeleton() {
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
       <main className="flex-grow mx-auto w-full">
         <FadeIn>
           <HeroSection />
@@ -161,7 +158,6 @@ export default function Home() {
           </Suspense>
         </ReactQueryProvider>
       </main>
-      <Footer />
     </div>
   );
 }
