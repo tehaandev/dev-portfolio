@@ -234,7 +234,7 @@ export default async function BlogPost({ params }: Props) {
                   <Link href="/blog">More Posts</Link>
                 </Button>
                 <Button size="sm" asChild>
-                  <Link href="/contact">Get in Touch</Link>
+                  <Link href="/#contact">Get in Touch</Link>
                 </Button>
               </div>
             </div>

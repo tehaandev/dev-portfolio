@@ -5,6 +5,7 @@ import { Toaster } from "sonner";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import TransitionWrapper from "@/components/TransitionWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -93,7 +94,7 @@ export default function RootLayout({
       >
         <Toaster position="top-center" richColors />
         <Header />
-        {children}
+        <TransitionWrapper>{children}</TransitionWrapper>
         <Footer />
         <SpeedInsights />
       </body>
