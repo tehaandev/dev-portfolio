@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,9 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
-import { FileQuestion, Home, ArrowLeft } from "lucide-react";
+import { ArrowLeft, FileQuestion, Home } from "lucide-react";
+import Link from "next/link";
 
 export default function NotFound() {
   return (
@@ -27,7 +25,8 @@ export default function NotFound() {
                 Page Not Found
               </CardTitle>
               <CardDescription className="text-base">
-                The page you're looking for doesn't exist or has been moved.
+                The page you&apos;re looking for doesn&apos;t exist or has been
+                moved.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -63,14 +62,14 @@ export default function NotFound() {
               {/* Additional help */}
               <div className="text-center text-sm text-muted-foreground">
                 <p>
-                  Still can't find what you're looking for?{" "}
+                  Still can&apos;t find what you&apos;re looking for?{" "}
                   <Link
                     href="/#contact"
                     className="text-primary hover:underline"
                   >
                     Contact me
                   </Link>{" "}
-                  and I'll help you out.
+                  and I&apos;ll help you out.
                 </p>
               </div>
             </CardContent>
