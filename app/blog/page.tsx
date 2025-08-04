@@ -4,18 +4,27 @@ import { getAllPosts } from "@/lib/posts";
 import type { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, User, Clock, Images } from "lucide-react";
+import { Calendar, User, Clock, Images, Edit2 } from "lucide-react";
 import SocialIcons from "@/components/ui/social-icons";
 
 export const metadata: Metadata = {
-  title: "Blog - Your Portfolio",
+  title: "Blog | Tehaan Perera",
   description:
-    "Read my latest thoughts on web development, technology, and more.",
+    "My thoughts on web development, technology, and the digital world.",
   openGraph: {
-    title: "Blog - Your Portfolio",
+    title: "Blog | Tehaan Perera",
     description:
-      "Read my latest thoughts on web development, technology, and more.",
+      "Explore my latest blog posts on software development and technology.",
+    url: "https://tehaan.me/blog",
     type: "website",
+    images: [
+      {
+        url: "https://tehaan.me/tp-og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Tehaan Perera - Blog",
+      },
+    ],
   },
 };
 
@@ -39,7 +48,7 @@ export default function BlogPage() {
 
   if (posts.length === 0) {
     return (
-      <div className="container max-w-4xl mx-auto px-4 py-16">
+      <div className="container max-w-4xl mx-auto px-4 py-16 h-[80vh]">
         <div className="text-center space-y-4">
           <h1 className="text-4xl font-bold tracking-tight">Blog</h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -48,7 +57,9 @@ export default function BlogPage() {
         </div>
         <Card className="mt-12">
           <CardContent className="flex flex-col items-center justify-center py-16">
-            <div className="text-6xl mb-4">📝</div>
+            <div className="text-6xl mb-4">
+              <Edit2 />
+            </div>
             <h2 className="text-2xl font-semibold mb-2">No posts yet</h2>
             <p className="text-muted-foreground text-center">
               {`I'm working on some great content. Check back soon for my latest

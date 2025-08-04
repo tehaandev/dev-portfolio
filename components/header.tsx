@@ -12,25 +12,11 @@ export function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // const scrollToSection = (
-  //   e: React.MouseEvent<HTMLAnchorElement>,
-  //   id: string
-  // ) => {
-  //   e.preventDefault();
-  //   const element = document.getElementById(id);
-  //   if (element) {
-  //     element.scrollIntoView({ behavior: "smooth" });
-  //   }
-  //   if (isMenuOpen) {
-  //     setIsMenuOpen(false);
-  //   }
-  // };
-
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 md:px-6 flex h-16 items-center justify-between max-md:p-3">
         <Link href="/" className="font-bold text-xl">
-          DevPortfolio
+          DevPortfolio.
         </Link>
 
         {/* Mobile menu button */}
@@ -44,54 +30,60 @@ export function Header() {
 
         {/* Desktop navigation */}
         <div className="hidden md:flex items-center gap-6">
-          <nav className="flex gap-6">
+          <nav className="flex gap-8">
             <Link
-              href="#hero"
+              href="/#hero"
               className="text-sm font-medium hover:text-primary"
             >
               Home
             </Link>
             <Link
-              href="#projects"
+              href="/blog"
+              className="text-sm font-medium hover:text-primary"
+            >
+              Blog
+            </Link>
+            <Link
+              href="/#projects"
               className="text-sm font-medium hover:text-primary"
             >
               Projects
             </Link>
             <Link
-              href="#skills"
+              href="/#skills"
               className="text-sm font-medium hover:text-primary"
             >
               Skills
             </Link>
             <Link
-              href="#credentials"
+              href="/#credentials"
               className="text-sm font-medium hover:text-primary"
             >
               Credentials
             </Link>
             <Link
-              href="#experience"
+              href="/#experience"
               className="text-sm font-medium hover:text-primary"
             >
               Experience
             </Link>
             <Link
-              href="#contact"
+              href="/#contact"
               className="text-sm font-medium hover:text-primary"
             >
               Contact
             </Link>
           </nav>
-          <Button size="sm" asChild>
-            <Link
-              href="https://calendar.app.google/7VhtRKka3953z2hq5"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Schedule Call
-            </Link>
-          </Button>
         </div>
+        <Button size="sm" className="hidden md:block">
+          <Link
+            href="https://calendar.app.google/7VhtRKka3953z2hq5"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Schedule Call
+          </Link>
+        </Button>
 
         {/* Mobile navigation */}
         <div
@@ -103,42 +95,49 @@ export function Header() {
         >
           <nav className="flex flex-col p-4 space-y-2">
             <Link
-              href="#hero"
+              href="/#hero"
               className="py-2 text-sm font-medium hover:text-primary"
               onClick={() => setIsMenuOpen(false)}
             >
               Home
             </Link>
             <Link
-              href="#projects"
+              href="/blog"
+              className="py-2 text-sm font-medium hover:text-primary"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Blog
+            </Link>
+            <Link
+              href="/#projects"
               className="py-2 text-sm font-medium hover:text-primary"
               onClick={() => setIsMenuOpen(false)}
             >
               Projects
             </Link>
             <Link
-              href="#skills"
+              href="/#skills"
               className="py-2 text-sm font-medium hover:text-primary"
               onClick={() => setIsMenuOpen(false)}
             >
               Skills
             </Link>
             <Link
-              href="#credentials"
+              href="/#credentials"
               className="py-2 text-sm font-medium hover:text-primary"
               onClick={() => setIsMenuOpen(false)}
             >
               Credentials
             </Link>
             <Link
-              href="#experience"
+              href="/#experience"
               className="py-2 text-sm font-medium hover:text-primary"
               onClick={() => setIsMenuOpen(false)}
             >
               Experience
             </Link>
             <Link
-              href="#contact"
+              href="/#contact"
               className="py-2 text-sm font-medium hover:text-primary"
               onClick={() => setIsMenuOpen(false)}
             >

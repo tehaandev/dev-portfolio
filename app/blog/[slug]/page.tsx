@@ -40,20 +40,32 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${post.metadata.title} - Your Portfolio`,
+    title: post.metadata.title,
     description: post.metadata.excerpt,
     openGraph: {
       title: post.metadata.title,
       description: post.metadata.excerpt,
+      url: `https://tehaan.me/blog/${slug}`,
       type: "article",
       publishedTime: new Date(post.metadata.date).toISOString(),
       authors: post.metadata.author ? [post.metadata.author] : undefined,
       tags: post.metadata.tags,
+      images: post.metadata.cover
+        ? [
+            {
+              url: post.metadata.cover,
+              width: 1200,
+              height: 630,
+              alt: post.metadata.title,
+            },
+          ]
+        : [],
     },
     twitter: {
       card: "summary_large_image",
       title: post.metadata.title,
       description: post.metadata.excerpt,
+      images: post.metadata.cover ? [post.metadata.cover] : [],
     },
   };
 }
