@@ -13,9 +13,9 @@ export default function TransitionWrapper({
     <AnimatePresence mode="sync">
       <motion.div
         key={pathname}
-        initial={{ x: -20, opacity: 0 }}
+        initial={{ x: 0, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.2 }}
+        transition={{ duration: 0.3 }}
       >
         {children}
       </motion.div>

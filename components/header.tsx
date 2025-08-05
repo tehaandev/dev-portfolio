@@ -50,10 +50,10 @@ export function Header() {
               Projects
             </Link>
             <Link
-              href="/#skills"
+              href="/#experience"
               className="text-sm font-medium hover:text-primary"
             >
-              Skills
+              Experience
             </Link>
             <Link
               href="/#credentials"
@@ -62,10 +62,10 @@ export function Header() {
               Credentials
             </Link>
             <Link
-              href="/#experience"
+              href="/#skills"
               className="text-sm font-medium hover:text-primary"
             >
-              Experience
+              Skills
             </Link>
             <Link
               href="/#contact"
@@ -116,11 +116,11 @@ export function Header() {
               Projects
             </Link>
             <Link
-              href="/#skills"
+              href="/#experience"
               className="py-2 text-sm font-medium hover:text-primary"
               onClick={() => setIsMenuOpen(false)}
             >
-              Skills
+              Experience
             </Link>
             <Link
               href="/#credentials"
@@ -130,11 +130,11 @@ export function Header() {
               Credentials
             </Link>
             <Link
-              href="/#experience"
+              href="/#skills"
               className="py-2 text-sm font-medium hover:text-primary"
               onClick={() => setIsMenuOpen(false)}
             >
-              Experience
+              Skills
             </Link>
             <Link
               href="/#contact"

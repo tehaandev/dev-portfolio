@@ -20,7 +20,7 @@ Fosterli Ltd. is a startup based in the UK focusing on digitizing the foster car
 
 The current process relied on large amounts of physical forms — leading to data loss, redundancy, and almost no collaboration between applicants and their social workers.
 
-As the sole developer of this web app, I took full ownership of the system design, development, and deployment.
+As the sole developer, I designed, built, and deployed a custom CRM solution that aims to replace the paper-based workflows with a modern, secure, and efficient web application.
 
 ---
 
@@ -56,4 +56,12 @@ Among the many features we deployed, a few stood out due to their complexity:
 - **Monitoring:** Sentry
 
 ---
+
+Building Fosterli helped me in a few different ways. It helped me apply theoretical knowledge of design patterns, SOLID principles, and clean architecture in a real-world scenario. It also gave me a chance to work with complex data structures and relationships, especially around the multi-stage assessments and conditional logic. Further, I also learned how to balance compliance requirements with user experience, especially in a sensitive domain like foster care.
+
+Working solo on this project also taught me how to manage the entire software development lifecycle, from requirements gathering and system design to deployment and monitoring. It meant that I had to manage client communications, scope creep, and delivery end-to-end — all of which made me a sharper and more accountable engineer.
+
+---
+
+Fosterli is now in active beta with real users - replacing the previous paper-based workflows with a modern, secure, and efficient web application. It was a great opportunity to apply my skills in a meaningful way, knowing that the end product would have a positive impact on the foster care sector.
 
