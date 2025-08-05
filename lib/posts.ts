@@ -44,7 +44,13 @@ export const getAllPosts = cache((): Post[] => {
         content,
       };
     })
-    .filter((post) => post.metadata.published) // Only include published posts
+    .filter((post) => {
+      const onlyPublished = process.env.NODE_ENV !== "development";
+      if (onlyPublished) {
+        return post.metadata.published !== false; // Only include published posts
+      }
+      return true; // Include all posts in development mode
+    }) // Only include published posts
     .sort((a, b) =>
       new Date(a.metadata.date) > new Date(b.metadata.date) ? -1 : 1
     );
