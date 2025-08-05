@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { motion } from "motion/react";
 
 interface FadeInProps {
   children: React.ReactNode;
@@ -9,42 +9,19 @@ interface FadeInProps {
 }
 
 export function FadeIn({ children, delay = 0, className = "" }: FadeInProps) {
-  const [isVisible, setIsVisible] = useState(false);
-  const elementRef = useRef<HTMLDivElement>(null);
-
-  // Use effect to set visibility after the component mounts
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            setIsVisible(true);
-          }, delay);
-        }
-      },
-      {
-        threshold: 0.1, // Trigger when 10% of the element is visible
-      }
-    );
-
-    const currentElement = elementRef.current;
-    if (currentElement) {
-      observer.observe(currentElement);
-    }
-
-    return () => {
-      if (currentElement) {
-        observer.unobserve(currentElement);
-      }
-    };
-  }, [delay]);
   return (
-    <div
-      ref={elementRef}
-      className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-0"} ${className}`}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{
+        duration: 0.7,
+        delay: delay / 1000, // Convert milliseconds to seconds
+      }}
+      className={className}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }
 
