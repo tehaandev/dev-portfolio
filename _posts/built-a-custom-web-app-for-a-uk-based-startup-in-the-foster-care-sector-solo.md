@@ -1,17 +1,24 @@
 ---
 title: "Built a custom web app for a UK-based startup in the foster care sector - solo."
-date: "2025-08-04"
+date: "2025-08-06"
 excerpt: "Developed a secure web application for Fosterli Ltd. to streamline the foster care application process, enhancing collaboration and compliance."
 tags:
   [
-    "Case Study",
-    "Web Development",
+    "Foster Care",
+    "Web App",
     "Next.js",
     "PostgreSQL",
-    "Prisma",
-    "Foster Care",
+    "GDPR Compliance",
+    "Freelance",
   ]
 cover: "/images/fosterli/cover.png"
+carousel:
+  [
+    "/images/fosterli/cover.png",
+    "/images/fosterli/dashboard.png",
+    "/images/fosterli/chat.png",
+    "/images/fosterli/form.png",
+  ]
 author: "Tehaan Perera"
 published: false
 ---
@@ -28,7 +35,7 @@ As the sole developer, I designed, built, and deployed a custom CRM solution tha
 
 Among the many features we deployed, a few stood out due to their complexity:
 
-- A two-stage assessment, with 6 steps in stage one and 15+ steps in stage two, including conditional (dynamic) sections and repeatable fields (e.g., multiple pets).
+- A two-stage assessment, with 15+ steps in stage one and 5+ steps in stage two, including conditional (dynamic) sections and repeatable fields (e.g., multiple pets).
 - Assignable form fields that allowed users to delegate specific fields to others for completion and submission — ensuring the assignee only had access to their designated fields.
 - A real-time chat system enabling applicants to communicate with their designated social workers.
 - Strict compliance requirements, including GDPR and industry-specific regulations related to handling sensitive data on minors.
@@ -63,5 +70,7 @@ Working solo on this project also taught me how to manage the entire software de
 
 ---
 
-Fosterli is now in active beta with real users - replacing the previous paper-based workflows with a modern, secure, and efficient web application. It was a great opportunity to apply my skills in a meaningful way, knowing that the end product would have a positive impact on the foster care sector.
+Fosterli is now in active beta with real users — replacing the previous paper-based workflows with a modern, secure, and efficient web application. The client’s goal is to cut the average foster care application process from 7–12 months down to 4–6 months, by streamlining assessments, enabling collaboration, and reducing redundant data entry.
+
+This project was a great opportunity to apply my skills in a meaningful way, knowing that the end product could directly improve how quickly children are placed with foster families.
 
