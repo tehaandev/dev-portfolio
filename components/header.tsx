@@ -81,7 +81,7 @@ export function Header() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Schedule Call
+            Schedule a Call
           </Link>
         </Button>
 
@@ -150,7 +150,7 @@ export function Header() {
                 rel="noopener noreferrer"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Schedule Call
+                Schedule a Call
               </Link>
             </Button>
           </nav>
