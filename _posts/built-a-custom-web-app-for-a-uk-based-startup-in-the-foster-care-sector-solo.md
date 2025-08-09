@@ -1,6 +1,6 @@
 ---
 title: "Built a custom web app for a UK-based startup in the foster care sector - solo."
-date: "2025-08-06"
+date: "2025-08-09"
 excerpt: "Developed a secure web application for Fosterli Ltd. to streamline the foster care application process, enhancing collaboration and compliance."
 tags:
   [
@@ -44,8 +44,8 @@ Among the many features we deployed, a few stood out due to their complexity:
 
 ## 🛠️ Key Features Shipped
 
-- Built a flexible system to handle multi-stage assessments (multiple steps each) with repeatable sections (e.g., multiple pets).
-- Implemented field assignment logic that allows users to delegate specific form fields to others. Assignees could only view and submit their designated fields — no extra access.
+- Built a flexible system to handle multi-stage assessment form with conditional logic and repeatable groups.
+- Implemented field-level assignment logic that allows users to delegate specific form fields to others. Assignees could only view and submit their designated fields — no extra access.
 - Integrated a live chat system between applicants and their assigned social workers, scoped by role and case ID to maintain strict separation.
 - Architected with GDPR and industry-specific compliance in mind, especially around sensitive PII and minor-related data. Used server-side rendering and secure storage patterns to enforce best practices.
 - Took complete ownership of dev, infra, and CI/CD — using Next.js App Router, Prisma/PostgreSQL (Amazon RDS), GitHub Actions, Docker, and EC2. Also added Sentry for real-time monitoring and alerting.
