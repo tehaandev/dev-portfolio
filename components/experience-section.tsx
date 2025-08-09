@@ -92,7 +92,7 @@ export function ExperienceSection() {
           </div>
         </div>
 
-        <div className="max-w-6xl mx-auto">
+        <div className="mx-auto">
           <div className="relative">
             {/* Timeline line */}
             <div className="absolute left-4 md:left-1/2 md:transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-border"></div>

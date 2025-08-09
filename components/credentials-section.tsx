@@ -92,7 +92,7 @@ export function CredentialsSection() {
           </div>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-2 lg:px-12">
+        <div className="grid gap-8 lg:grid-cols-2">
           {/* Education */}
           <div className="space-y-6">
             <div className="flex items-center gap-2 mb-4">
