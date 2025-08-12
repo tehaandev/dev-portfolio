@@ -97,6 +97,12 @@ export default function RootLayout({
         <TransitionWrapper>{children}</TransitionWrapper>
         <Footer />
         <SpeedInsights />
+        {/* 
+          Developed by Tehaan Perera
+          Website: https://tehaan.me
+          Project: Tehaan Perera's Portfolio
+          Year: 2025
+        */}
       </body>
     </html>
   );
