@@ -1,7 +1,7 @@
 ---
 title: "Built a custom web app for a UK-based startup in the foster care sector - solo."
 date: "2025-08-09"
-excerpt: "Developed a secure web application for Fosterli Ltd. to streamline the foster care application process, enhancing collaboration and compliance."
+excerpt: "Developed a secure web application for UK-based startup to streamline the foster care application process, enhancing collaboration and compliance."
 tags:
   [
     "Foster Care",
@@ -11,19 +11,19 @@ tags:
     "GDPR Compliance",
     "Freelance",
   ]
-cover: "/images/fosterli/cover.png"
+cover: "/images/foster-care-crm/cover.png"
 carousel:
   [
-    "/images/fosterli/cover.png",
-    "/images/fosterli/dashboard.png",
-    "/images/fosterli/chat.png",
-    "/images/fosterli/form.png",
+    "/images/foster-care-crm/cover.png",
+    "/images/foster-care-crm/dashboard.png",
+    "/images/foster-care-crm/chat.png",
+    "/images/foster-care-crm/form.png",
   ]
 author: "Tehaan Perera"
 published: false
 ---
 
-Fosterli Ltd. is a startup based in the UK focusing on digitizing the foster care application process, and they needed a secure web application that could handle complex and highly regulated assessments across to-be foster carers and agencies.
+The client is a startup based in the UK focusing on digitizing the foster care application process, and they needed a secure web application that could handle complex and highly regulated assessments across to-be foster carers and agencies.
 
 The current process relied on large amounts of physical forms — leading to data loss, redundancy, and almost no collaboration between applicants and their social workers.
 
@@ -64,13 +64,13 @@ Among the many features we deployed, a few stood out due to their complexity:
 
 ---
 
-Building Fosterli helped me in a few different ways. It helped me apply theoretical knowledge of design patterns, SOLID principles, and clean architecture in a real-world scenario. It also gave me a chance to work with complex data structures and relationships, especially around the multi-stage assessments and conditional logic. Further, I also learned how to balance compliance requirements with user experience, especially in a sensitive domain like foster care.
+Building this application helped me in a few different ways. It helped me apply theoretical knowledge of design patterns, SOLID principles, and clean architecture in a real-world scenario. It also gave me a chance to work with complex data structures and relationships, especially around the multi-stage assessments and conditional logic. Further, I also learned how to balance compliance requirements with user experience, especially in a sensitive domain like foster care.
 
 Working solo on this project also taught me how to manage the entire software development lifecycle, from requirements gathering and system design to deployment and monitoring. It meant that I had to manage client communications, scope creep, and delivery end-to-end — all of which made me a sharper and more accountable engineer.
 
 ---
 
-Fosterli is now in active beta with real users — replacing the previous paper-based workflows with a modern, secure, and efficient web application. The client’s goal is to cut the average foster care application process from 7–12 months down to 4–6 months, by streamlining assessments, enabling collaboration, and reducing redundant data entry.
+The application is now in private beta with real users — replacing the previous paper-based workflows with a modern, secure, and efficient web application. The client’s goal is to cut the average foster care application process from 7–12 months down to 4–6 months, by streamlining assessments, enabling collaboration, and reducing redundant data entry.
 
 This project was a great opportunity to apply my skills in a meaningful way, knowing that the end product could directly improve how quickly children are placed with foster families.
 
