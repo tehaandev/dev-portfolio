@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tehaan Perera | Full-Stack Developer & Software Engineer",
+  title: "Tehaan Perera | Software Engineer",
   description:
     "Professional portfolio showcasing projects, skills, and experience in web development, programming, and technology solutions.",
   keywords: [
@@ -36,10 +36,10 @@ export const metadata: Metadata = {
 
   // Open Graph / social sharing metadata
   openGraph: {
-    title: "Tehaan Perera | Software Developer Portfolio",
+    title: "Tehaan Perera | Software Engineer Portfolio",
     description:
-      "Explore my software development projects, technical skills, and professional experience.",
-    url: "https://tehaan.me", // Replace with your actual domain
+      "Explore my software engineering projects, technical skills, and professional experience.",
+    url: "https://tehaan.me",
     siteName: "Tehaan Perera Portfolio",
     locale: "en_US",
     type: "website",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
         url: "https://tehaan.me/tp-og-image.jpg", // Create this image - 1200x630px recommended
         width: 1200,
         height: 630,
-        alt: "Tehaan Perera - Software Developer",
+        alt: "Tehaan Perera | Software Engineer",
       },
     ],
   },
@@ -56,9 +56,8 @@ export const metadata: Metadata = {
   // Twitter card metadata
   twitter: {
     card: "summary_large_image",
-    title: "Tehaan Perera | Software Developer",
-    description:
-      "Full-stack developer specializing in modern web technologies.",
+    title: "Tehaan Perera | Software Engineer",
+    description: "Software Engineer specializing in modern web technologies.",
     creator: "@yourtwitterhandle",
     images: ["https://tehaan.me/tp-og-image.jpg"],
   },
