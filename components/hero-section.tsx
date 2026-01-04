@@ -38,7 +38,7 @@ export function HeroSection() {
           <div className="flex items-center justify-center order-1 lg:order-2">
             <div className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] lg:w-[400px] lg:h-[400px] rounded-full overflow-hidden border-4 border-background shadow-xl">
               <Image
-                src="/tp.jpg?height=400&width=400"
+                src="/tp.jpg"
                 alt="Tehaan Perera"
                 fill
                 className="object-cover"
