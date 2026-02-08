@@ -15,11 +15,11 @@ export const metadata: Metadata = {
     title: "Blog | Tehaan Perera",
     description:
       "Explore my latest blog posts on software development and technology.",
-    url: "https://tehaan.me/blog",
+    url: "https://www.tehaan.dev/blog",
     type: "website",
     images: [
       {
-        url: "https://tehaan.me/tp-og-image.jpg",
+        url: "https://www.tehaan.dev/tp-og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Tehaan Perera - Blog",

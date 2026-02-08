@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: post.metadata.title,
       description: post.metadata.excerpt,
-      url: `https://tehaan.me/blog/${slug}`,
+      url: `https://www.tehaan.dev/blog/${slug}`,
       type: "article",
       publishedTime: new Date(post.metadata.date).toISOString(),
       authors: post.metadata.author ? [post.metadata.author] : undefined,

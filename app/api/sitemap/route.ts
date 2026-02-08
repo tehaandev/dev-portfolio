@@ -2,15 +2,16 @@ import { getAllPosts } from "@/lib/posts";
 import dayjs from "dayjs";
 
 export async function GET() {
+  const BASE_URL = "https://www.tehaan.dev";
   const staticRoutes = [
     {
-      url: "https://tehaan.me/",
+      url: `${BASE_URL}/`,
       lastModified: dayjs("2025-07-30").toISOString(), // Use ISO format for consistent parsing
       changeFrequency: "yearly",
       priority: 1,
     },
     {
-      url: "https://tehaan.me/blog",
+      url: `${BASE_URL}/blog`,
       lastModified: dayjs("2025-07-30").toISOString(),
       changeFrequency: "monthly",
       priority: 0.8,
@@ -18,7 +19,7 @@ export async function GET() {
   ];
   const blogPosts = getAllPosts();
   const blogRoutes = blogPosts.map((post) => ({
-    url: `https://tehaan.me/blog/${post.slug}`,
+    url: `${BASE_URL}/blog/${post.slug}`,
     lastModified: dayjs(post.metadata.date).toISOString(),
     changeFrequency: "monthly",
     priority: 0.8,
@@ -33,7 +34,7 @@ export async function GET() {
             <lastmod>${route.lastModified}</lastmod>
             <changefreq>${route.changeFrequency}</changefreq>
             <priority>${route.priority}</priority>
-          </url>`
+          </url>`,
           )
           .join("")}
         ${blogRoutes
@@ -44,7 +45,7 @@ export async function GET() {
             <lastmod>${route.lastModified}</lastmod>
             <changefreq>${route.changeFrequency}</changefreq>
             <priority>${route.priority}</priority>
-          </url>`
+          </url>`,
           )
           .join("")}
       </urlset>`;

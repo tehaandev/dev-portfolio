@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://tehaan.me/api/sitemap
+Sitemap: https://www.tehaan.dev/api/sitemap

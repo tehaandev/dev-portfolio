@@ -39,13 +39,13 @@ export const metadata: Metadata = {
     title: "Tehaan Perera | Software Engineer Portfolio",
     description:
       "Explore my software engineering projects, technical skills, and professional experience.",
-    url: "https://tehaan.me",
+    url: "https://www.tehaan.dev",
     siteName: "Tehaan Perera Portfolio",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://tehaan.me/tp-og-image.jpg", // Create this image - 1200x630px recommended
+        url: "https://www.tehaan.dev/tp-og-image.jpg", // Create this image - 1200x630px recommended
         width: 1200,
         height: 630,
         alt: "Tehaan Perera | Software Engineer",
@@ -59,12 +59,12 @@ export const metadata: Metadata = {
     title: "Tehaan Perera | Software Engineer",
     description: "Software Engineer specializing in modern web technologies.",
     creator: "@yourtwitterhandle",
-    images: ["https://tehaan.me/tp-og-image.jpg"],
+    images: ["https://www.tehaan.dev/tp-og-image.jpg"],
   },
 
   // Canonical URL
   alternates: {
-    canonical: "https://tehaan.me", // Replace with your actual domain
+    canonical: "https://www.tehaan.dev", // Replace with your actual domain
   },
 
   // Icons
@@ -98,7 +98,7 @@ export default function RootLayout({
         <SpeedInsights />
         {/* 
           Developed by Tehaan Perera
-          Website: https://tehaan.me
+          Website: https://www.tehaan.dev
           Project: Tehaan Perera's Portfolio
           Year: 2025
         */}
