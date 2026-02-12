@@ -5,7 +5,7 @@ export async function GET() {
   const BASE_URL = "https://www.tehaan.dev";
   const staticRoutes = [
     {
-      url: `${BASE_URL}/`,
+      url: `${BASE_URL}`,
       lastModified: dayjs("2025-07-30").toISOString(), // Use ISO format for consistent parsing
       changeFrequency: "yearly",
       priority: 1,
