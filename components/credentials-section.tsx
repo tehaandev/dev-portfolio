@@ -5,7 +5,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { GraduationCap, Award, Calendar } from "lucide-react";
 
 const education = [
@@ -13,8 +12,6 @@ const education = [
     id: 1,
     degree: "BSc. (Hons.) in Computer Science",
     institution: "University of Staffordshire (APIIT, Sri Lanka)",
-    year: "2023 - Present",
-    gpa: "3.7",
     description:
       "Focused on software engineering, algorithms, and data structures. Completed senior capstone project on machine learning applications.",
   },
@@ -22,13 +19,11 @@ const education = [
     id: 2,
     degree: "GCE Advanced Level",
     institution: "Ananda College, Colombo",
-    year: "2022",
   },
   {
     id: 3,
     degree: "GCE Ordinary Level",
     institution: "Ananda College, Colombo",
-    year: "2019",
   },
 ];
 
@@ -103,20 +98,11 @@ export function CredentialsSection() {
               <Card key={edu.id}>
                 <CardHeader>
                   <CardTitle className="text-lg">{edu.degree}</CardTitle>
-                  <CardDescription className="flex items-center gap-2">
-                    <Calendar className="h-4 w-4" />
-                    {edu.year}
-                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <p className="font-semibold text-primary mb-2">
                     {edu.institution}
                   </p>
-                  {edu.gpa && (
-                    <Badge variant="secondary" className="mb-2">
-                      GPA: {edu.gpa}
-                    </Badge>
-                  )}
                   <p className="text-sm text-muted-foreground">
                     {edu.description}
                   </p>
