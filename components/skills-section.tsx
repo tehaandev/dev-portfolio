@@ -1,4 +1,3 @@
-import { Card, CardContent } from "@/components/ui/card";
 import { Infinity } from "lucide-react";
 import {
   SiAmazonwebservices,
@@ -51,7 +50,7 @@ const skillCategories = [
       },
       {
         name: "Next.js",
-        icon: <SiNextdotjs className="h-4 w-4 text-[#000000]" />,
+        icon: <SiNextdotjs className="h-4 w-4 dark:text-white text-[#000000]" />,
       },
       {
         name: "Tailwind CSS",
@@ -59,7 +58,7 @@ const skillCategories = [
       },
       {
         name: "Zustand",
-        icon: <span className="text-sm flex items-center">🔄</span>,
+        icon: <span className="text-sm leading-none">🔄</span>,
       },
       {
         name: "React Query",
@@ -81,7 +80,7 @@ const skillCategories = [
       { name: "NestJS", icon: <SiNestjs className="h-4 w-4 text-[#E0234E]" /> },
       {
         name: "Express",
-        icon: <SiExpress className="h-4 w-4 text-[#000000]" />,
+        icon: <SiExpress className="h-4 w-4 dark:text-white text-[#000000]" />,
       },
       {
         name: "GraphQL",
@@ -113,7 +112,10 @@ const skillCategories = [
         name: "Firebase",
         icon: <SiFirebase className="h-4 w-4 text-[#FFCA28]" />,
       },
-      { name: "Prisma", icon: <SiPrisma className="h-4 w-4 text-[#2D3748]" /> },
+      {
+        name: "Prisma",
+        icon: <SiPrisma className="h-4 w-4 dark:text-white text-[#2D3748]" />,
+      },
       { name: "Redis", icon: <SiRedis className="h-4 w-4 text-[#D82C20]" /> },
     ],
   },
@@ -121,21 +123,27 @@ const skillCategories = [
     name: "DevOps & Tools",
     skills: [
       { name: "Git", icon: <SiGit className="h-4 w-4 text-[#F05032]" /> },
-      { name: "GitHub", icon: <SiGithub className="h-4 w-4 text-[#181717]" /> },
+      {
+        name: "GitHub",
+        icon: <SiGithub className="h-4 w-4 dark:text-white text-[#181717]" />,
+      },
       { name: "Docker", icon: <SiDocker className="h-4 w-4 text-[#2496ED]" /> },
       {
         name: "AWS",
         icon: <SiAmazonwebservices className="h-4 w-4 text-[#FF9900]" />,
       },
-      { name: "Vercel", icon: <SiVercel className="h-4 w-4 text-[#000000]" /> },
+      {
+        name: "Vercel",
+        icon: <SiVercel className="h-4 w-4 dark:text-white text-[#000000]" />,
+      },
       {
         name: "CI/CD",
-        icon: <Infinity className="h-4 w-4 text-[#4B5563]" />,
+        icon: <Infinity className="h-4 w-4 text-muted-foreground" />,
       },
       { name: "Jest", icon: <SiJest className="h-4 w-4 text-[#C21325]" /> },
       {
         name: "Cypress",
-        icon: <SiCypress className="h-4 w-4 text-[#17202C]" />,
+        icon: <SiCypress className="h-4 w-4 dark:text-white text-[#17202C]" />,
       },
     ],
   },
@@ -143,42 +151,49 @@ const skillCategories = [
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="py-16 md:py-24">
+    <section id="skills" className="py-20 md:py-28">
       <div className="container px-4 md:px-6 mx-auto">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-          <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-              My Skills
-            </h2>
-            <p className="max-w-[700px] text-muted-foreground md:text-xl">
-              Technologies and tools I work with on a regular basis.
-            </p>
-          </div>
+        {/* Section header */}
+        <div className="flex flex-col items-center justify-center text-center mb-14">
+          <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-3">
+            Toolkit
+          </p>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-4">
+            My Skills
+          </h2>
+          <p className="max-w-[600px] text-muted-foreground md:text-lg">
+            Technologies and tools I work with on a regular basis.
+          </p>
+          <div className="mt-5 h-1 w-16 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
         </div>
-        <div className="grid gap-8 md:grid-cols-2">
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-10">
           {skillCategories.map((category) => (
-            <Card key={category.name} className="overflow-hidden">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-4">{category.name}</h3>
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill) => (
-                    <div
-                      key={skill.name}
-                      className="flex items-center gap-1.5 bg-muted px-3 py-1.5 rounded-lg text-sm font-medium"
+            <div key={category.name} className="space-y-4">
+              <div className="flex items-center gap-2.5">
+                <div className="w-1 h-5 bg-primary rounded-full flex-shrink-0" />
+                <h3 className="text-lg font-bold">{category.name}</h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skill) => (
+                  <div
+                    key={skill.name}
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-muted hover:bg-primary/10 hover:text-primary border border-transparent hover:border-primary/20 transition-all text-sm font-medium cursor-default"
+                  >
+                    <span
+                      className="flex-shrink-0 leading-none"
+                      aria-hidden="true"
                     >
-                      <span className="text-lg" aria-hidden="true">
-                        {skill.icon}
-                      </span>
-                      <span>{skill.name}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                      {skill.icon}
+                    </span>
+                    {skill.name}
+                  </div>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>
     </section>
   );
 }
-

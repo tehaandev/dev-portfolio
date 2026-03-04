@@ -3,6 +3,7 @@ import ReactQueryProvider from "@/components/ReactQueryProvider";
 import { CredentialsSection } from "@/components/credentials-section";
 import { ExperienceSection } from "@/components/experience-section";
 import { HeroSection } from "@/components/hero-section";
+import { TechMarquee } from "@/components/tech-marquee";
 import { Suspense, lazy } from "react";
 
 // Lazy load components that are not immediately visible
@@ -122,9 +123,9 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       <main className="flex-grow mx-auto w-full">
-        <FadeIn>
-          <HeroSection />
-        </FadeIn>
+        <HeroSection />
+
+        <TechMarquee />
 
         <Suspense fallback={<ProjectsSkeleton />}>
           <FadeIn>

@@ -5,77 +5,50 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
+const navLinks = [
+  { href: "/#hero", label: "Home" },
+  { href: "/blog", label: "Blog" },
+  { href: "/#projects", label: "Projects" },
+  { href: "/#experience", label: "Experience" },
+  { href: "/#credentials", label: "Credentials" },
+  { href: "/#skills", label: "Skills" },
+  { href: "/#contact", label: "Contact" },
+];
+
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 md:px-6 flex h-16 items-center justify-between max-md:p-3">
-        <Link href="/" className="font-bold text-xl">
-          DevPortfolio.
+        <Link href="/" className="font-bold text-xl tracking-tight group">
+          Tehaan<span className="text-primary transition-colors">.</span>
         </Link>
 
         {/* Mobile menu button */}
         <button
-          className="md:hidden"
-          onClick={toggleMenu}
+          className="md:hidden flex items-center justify-center w-9 h-9 rounded-lg hover:bg-muted transition-colors"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
 
         {/* Desktop navigation */}
-        <div className="hidden md:flex items-center gap-6">
-          <nav className="flex gap-8">
+        <nav className="hidden md:flex items-center gap-1">
+          {navLinks.map((link) => (
             <Link
-              href="/#hero"
-              className="text-sm font-medium hover:text-primary"
+              key={link.href}
+              href={link.href}
+              className="relative px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-muted/60 group"
             >
-              Home
+              {link.label}
+              <span className="absolute bottom-1 left-3 right-3 h-px bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left rounded-full" />
             </Link>
-            <Link
-              href="/blog"
-              className="text-sm font-medium hover:text-primary"
-            >
-              Blog
-            </Link>
-            <Link
-              href="/#projects"
-              className="text-sm font-medium hover:text-primary"
-            >
-              Projects
-            </Link>
-            <Link
-              href="/#experience"
-              className="text-sm font-medium hover:text-primary"
-            >
-              Experience
-            </Link>
-            <Link
-              href="/#credentials"
-              className="text-sm font-medium hover:text-primary"
-            >
-              Credentials
-            </Link>
-            <Link
-              href="/#skills"
-              className="text-sm font-medium hover:text-primary"
-            >
-              Skills
-            </Link>
-            <Link
-              href="/#contact"
-              className="text-sm font-medium hover:text-primary"
-            >
-              Contact
-            </Link>
-          </nav>
-        </div>
-        <Button size="sm" className="hidden md:block">
+          ))}
+        </nav>
+
+        <Button size="sm" className="hidden md:flex" asChild>
           <Link
             href="https://calendar.app.google/7VhtRKka3953z2hq5"
             target="_blank"
@@ -87,76 +60,38 @@ export function Header() {
 
         {/* Mobile navigation */}
         <div
-          className={`absolute top-16 left-0 right-0 bg-background border-b md:hidden transition-transform duration-300 ease-in-out transform ${
+          className={`absolute top-16 left-0 right-0 bg-background/95 backdrop-blur-md border-b border-border/60 md:hidden transition-all duration-300 ease-in-out ${
             isMenuOpen
-              ? "translate-y-0 opacity-100"
-              : "-translate-y-full opacity-0 pointer-events-none"
+              ? "opacity-100 translate-y-0 pointer-events-auto"
+              : "opacity-0 -translate-y-2 pointer-events-none"
           }`}
         >
-          <nav className="flex flex-col p-4 space-y-2">
-            <Link
-              href="/#hero"
-              className="py-2 text-sm font-medium hover:text-primary"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Home
-            </Link>
-            <Link
-              href="/blog"
-              className="py-2 text-sm font-medium hover:text-primary"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Blog
-            </Link>
-            <Link
-              href="/#projects"
-              className="py-2 text-sm font-medium hover:text-primary"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Projects
-            </Link>
-            <Link
-              href="/#experience"
-              className="py-2 text-sm font-medium hover:text-primary"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Experience
-            </Link>
-            <Link
-              href="/#credentials"
-              className="py-2 text-sm font-medium hover:text-primary"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Credentials
-            </Link>
-            <Link
-              href="/#skills"
-              className="py-2 text-sm font-medium hover:text-primary"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Skills
-            </Link>
-            <Link
-              href="/#contact"
-              className="py-2 text-sm font-medium hover:text-primary"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Contact
-            </Link>
-            <Button size="sm" asChild className="mt-2">
+          <nav className="flex flex-col p-3 gap-1">
+            {navLinks.map((link) => (
               <Link
-                href="https://calendar.app.google/7VhtRKka3953z2hq5"
-                target="_blank"
-                rel="noopener noreferrer"
+                key={link.href}
+                href={link.href}
+                className="px-3 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/60 rounded-lg transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Schedule a Call
+                {link.label}
               </Link>
-            </Button>
+            ))}
+            <div className="pt-2 pb-1">
+              <Button size="sm" className="w-full" asChild>
+                <Link
+                  href="https://calendar.app.google/7VhtRKka3953z2hq5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Schedule a Call
+                </Link>
+              </Button>
+            </div>
           </nav>
         </div>
       </div>
     </header>
   );
 }
-
