@@ -1,21 +1,35 @@
 import dayjs from "dayjs";
-import SocialIcons from "./ui/social-icons";
 import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/60 bg-background">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col items-center justify-between gap-4 py-8 md:h-20 md:flex-row md:py-0">
-          <div className="flex flex-col items-center md:items-start gap-1">
-            <Link href="/" className="font-bold text-base tracking-tight">
-              Tehaan<span className="text-primary">.</span>
-            </Link>
-            <p className="text-xs text-muted-foreground">
-              © {dayjs().year()} Tehaan Perera. All rights reserved.
-            </p>
-          </div>
-          <SocialIcons className="flex items-center gap-3" />
+    <footer className="border-border bg-card w-full border-t px-6 py-12 md:px-8">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 text-xs font-medium tracking-widest uppercase md:flex-row">
+        <div className="text-muted-foreground">
+          © {dayjs().year()} Tehaan Perera. All rights reserved.
+        </div>
+        <div className="flex gap-8">
+          <Link
+            href="https://github.com/tehaandev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-primary transition-colors duration-200">
+            GitHub
+          </Link>
+          <Link
+            href="https://www.linkedin.com/in/tehaan-perera/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-primary transition-colors duration-200">
+            LinkedIn
+          </Link>
+          <Link
+            href="https://calendar.app.google/7VhtRKka3953z2hq5"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-primary transition-colors duration-200">
+            Schedule
+          </Link>
         </div>
       </div>
     </footer>
