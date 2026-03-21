@@ -4,19 +4,35 @@ import { motion } from "motion/react";
 
 interface FadeInProps {
   children: React.ReactNode;
-  delay?: number; // Delay in milliseconds
-  className?: string; // Additional classes for styling
+  delay?: number;
+  className?: string;
+  direction?: "up" | "down" | "left" | "right" | "none";
 }
 
-export function FadeIn({ children, delay = 0, className = "" }: FadeInProps) {
+const directionOffset = {
+  up: { y: 24, x: 0 },
+  down: { y: -24, x: 0 },
+  left: { y: 0, x: 24 },
+  right: { y: 0, x: -24 },
+  none: { y: 0, x: 0 },
+};
+
+export function FadeIn({
+  children,
+  delay = 0,
+  className = "",
+  direction = "up",
+}: FadeInProps) {
+  const offset = directionOffset[direction];
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
+      initial={{ opacity: 0, ...offset }}
+      whileInView={{ opacity: 1, y: 0, x: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
       transition={{
-        duration: 0.7,
-        delay: delay / 1000, // Convert milliseconds to seconds
+        duration: 0.6,
+        delay: delay / 1000,
+        ease: [0.21, 0.47, 0.32, 0.98],
       }}
       className={className}
     >
@@ -24,4 +40,3 @@ export function FadeIn({ children, delay = 0, className = "" }: FadeInProps) {
     </motion.div>
   );
 }
-

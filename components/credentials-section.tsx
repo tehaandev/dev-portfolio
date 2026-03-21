@@ -5,7 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { GraduationCap, Award, Calendar } from "lucide-react";
+import { GraduationCap, Award, Calendar, ExternalLink } from "lucide-react";
 
 const education = [
   {
@@ -51,124 +51,106 @@ const certifications = [
   },
 ];
 
-// const achievements = [
-//   {
-//     id: 1,
-//     title: "Hackathon Winner",
-//     description: "First place at TechCrunch Disrupt Hackathon 2023",
-//     year: "2023",
-//   },
-//   {
-//     id: 2,
-//     title: "Open Source Contributor",
-//     description: "Active contributor to React and Next.js repositories",
-//     year: "2022 - Present",
-//   },
-//   {
-//     id: 3,
-//     title: "Dean's List",
-//     description: "Academic excellence recognition for 4 consecutive semesters",
-//     year: "2020 - 2022",
-//   },
-// ];
-
 export function CredentialsSection() {
   return (
-    <section id="credentials" className="py-16 md:py-24">
+    <section id="credentials" className="py-20 md:py-28">
       <div className="container px-4 md:px-6 mx-auto">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-          <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-              Credentials
-            </h2>
-            <p className="max-w-[700px] text-muted-foreground md:text-xl">
-              My educational background, certifications, and achievements.
-            </p>
-          </div>
+        {/* Section header */}
+        <div className="flex flex-col items-center justify-center text-center mb-14">
+          <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-3">
+            Background
+          </p>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-4">
+            Credentials
+          </h2>
+          <p className="max-w-[600px] text-muted-foreground md:text-lg">
+            My educational background, certifications, and achievements.
+          </p>
+          <div className="mt-5 h-1 w-16 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="grid gap-10 lg:grid-cols-2">
           {/* Education */}
-          <div className="space-y-6">
-            <div className="flex items-center gap-2 mb-4">
-              <GraduationCap className="h-6 w-6 text-primary" />
+          <div className="space-y-5">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 text-primary">
+                <GraduationCap className="h-5 w-5" />
+              </div>
               <h3 className="text-2xl font-bold">Education</h3>
             </div>
             {education.map((edu) => (
-              <Card key={edu.id}>
-                <CardHeader>
-                  <CardTitle className="text-lg">{edu.degree}</CardTitle>
+              <Card
+                key={edu.id}
+                className="border-border/60 hover:border-primary/25 hover:shadow-sm transition-all duration-300 group"
+              >
+                <CardHeader className="pb-2">
+                  <div className="flex items-start gap-3">
+                    <div className="mt-0.5 w-1 h-full min-h-[1.25rem] bg-gradient-to-b from-primary to-primary/20 rounded-full flex-shrink-0" />
+                    <CardTitle className="text-base font-semibold leading-snug">
+                      {edu.degree}
+                    </CardTitle>
+                  </div>
                 </CardHeader>
-                <CardContent>
-                  <p className="font-semibold text-primary mb-2">
+                <CardContent className="pl-7">
+                  <p className="font-semibold text-primary text-sm mb-1.5">
                     {edu.institution}
                   </p>
-                  <p className="text-sm text-muted-foreground">
-                    {edu.description}
-                  </p>
+                  {edu.description && (
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {edu.description}
+                    </p>
+                  )}
                 </CardContent>
               </Card>
             ))}
           </div>
 
           {/* Certifications */}
-          <div className="space-y-6">
-            <div className="flex items-center gap-2 mb-4">
-              <Award className="h-6 w-6 text-primary" />
+          <div className="space-y-5">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 text-primary">
+                <Award className="h-5 w-5" />
+              </div>
               <h3 className="text-2xl font-bold">Certifications</h3>
             </div>
             {certifications.map((cert) => (
-              <Card key={cert.id}>
-                <CardHeader>
-                  <CardTitle className="text-lg">{cert.name}</CardTitle>
-                  <CardDescription className="flex items-center gap-2">
-                    <Calendar className="h-4 w-4" />
-                    {cert.year}
-                  </CardDescription>
+              <Card
+                key={cert.id}
+                className="border-border/60 hover:border-primary/25 hover:shadow-sm transition-all duration-300 group"
+              >
+                <CardHeader className="pb-2">
+                  <div className="flex items-start gap-3">
+                    <div className="mt-0.5 w-1 h-full min-h-[1.25rem] bg-gradient-to-b from-primary to-primary/20 rounded-full flex-shrink-0" />
+                    <div className="flex-1 min-w-0">
+                      <CardTitle className="text-base font-semibold leading-snug">
+                        {cert.name}
+                      </CardTitle>
+                      <CardDescription className="flex items-center gap-1.5 mt-1.5">
+                        <Calendar className="h-3.5 w-3.5" />
+                        {cert.year}
+                      </CardDescription>
+                    </div>
+                  </div>
                 </CardHeader>
-                <CardContent>
-                  <p className="font-semibold text-primary mb-2">
+                <CardContent className="pl-7 pt-0">
+                  <p className="font-semibold text-primary text-sm mb-3">
                     {cert.issuer}
                   </p>
                   <a
                     href={cert.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs text-primary underline"
+                    className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-primary transition-colors"
                   >
+                    <ExternalLink className="h-3 w-3" />
                     View Credential
                   </a>
                 </CardContent>
               </Card>
             ))}
           </div>
-
-          {/* Achievements */}
-          {/* <div className="space-y-6">
-            <div className="flex items-center gap-2 mb-4">
-              <Award className="h-6 w-6 text-primary" />
-              <h3 className="text-2xl font-bold">Achievements</h3>
-            </div>
-            {achievements.map((achievement) => (
-              <Card key={achievement.id}>
-                <CardHeader>
-                  <CardTitle className="text-lg">{achievement.title}</CardTitle>
-                  <CardDescription className="flex items-center gap-2">
-                    <Calendar className="h-4 w-4" />
-                    {achievement.year}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    {achievement.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div> */}
         </div>
       </div>
     </section>
   );
 }
-

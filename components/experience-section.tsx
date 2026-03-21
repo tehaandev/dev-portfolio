@@ -1,22 +1,12 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Building, Calendar, MapPin } from "lucide-react";
-
 const experiences = [
   {
     id: 3,
     title: "Software Engineer",
-    company: "Avonet Technologies (Pvt) Ltd",
+    company: "Avonet Technologies",
     location: "Hybrid",
-    period: "Aug 2025 - Present",
-    type: "Full-time",
-    description: [],
+    period: "Aug 2025 — Present",
+    isCurrent: true,
+    description: "",
     technologies: [],
   },
   {
@@ -24,145 +14,80 @@ const experiences = [
     title: "Software Engineer",
     company: "Amplify Solutions",
     location: "Remote",
-    period: "Mar 2024 - Jun 2025",
-    type: "Contract",
-    description: [
-      "Built a sales management system with fraud detection using Node.js, Next.js, and Zustand.",
-      "Developed a legal research platform with optimized querying via MongoDB Atlas Search.",
-      "Managed AWS infrastructure and automated CI/CD pipelines with GitHub Actions and Docker Compose.",
-    ],
-    technologies: [
-      "React",
-      "Next.js",
-      "NestJS",
-      "Node.js",
-      "AWS",
-      "Docker",
-      "PostgreSQL",
-    ],
+    period: "Mar 2024 — Jun 2025",
+    isCurrent: false,
+    description:
+      "Built a sales management system with fraud detection using Node.js, Next.js, and Zustand. Developed a legal research platform with optimised querying via MongoDB Atlas Search. Managed AWS infrastructure and automated CI/CD pipelines.",
+    technologies: ["React", "Next.js", "NestJS", "AWS", "Docker", "PostgreSQL"],
   },
   {
     id: 1,
     title: "Software Engineering Intern",
-    company: "Calcey Technologies LLC",
+    company: "Calcey Technologies",
     location: "Colombo, Sri Lanka",
-    period: "Jun 2022 - Dec 2022",
-    type: "Full-time",
-    description: [
-      "Collaborated with Agile teams to design and develop applets.",
-      "Participated in Agile ceremonies to ensure seamless workflows.",
-      "Conducted developer testing to deliver high-quality code.",
-    ],
-    technologies: [
-      "React",
-      "Angular",
-      "Node.js",
-      "SQLite",
-      "Tailwind CSS",
-      "Vercel",
-    ],
+    period: "Jun 2022 — Dec 2022",
+    isCurrent: false,
+    description:
+      "Collaborated with Agile teams to design and develop applets. Participated in Agile ceremonies and conducted developer testing to deliver high-quality code.",
+    technologies: ["React", "Angular", "Node.js", "Tailwind CSS"],
   },
 ];
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="py-16 md:py-24 bg-muted/50">
-      <div className="container px-4 md:px-6 mx-auto">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-          <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-              Work Experience
-            </h2>
-            <p className="max-w-[700px] text-muted-foreground md:text-xl">
-              My professional journey and the roles that have shaped my career.
-            </p>
+    <section id="experience" className="mx-auto max-w-7xl px-6 py-8 md:px-8">
+      <h2 className="mb-12 text-3xl font-bold tracking-tight">
+        Experience{" "}
+        <span className="text-muted-foreground ml-4 font-mono text-sm">
+          / LOG: 003
+        </span>
+      </h2>
+
+      <div className="space-y-4">
+        {experiences.map((exp) => (
+          <div
+            key={exp.id}
+            className="group bg-card hover:bg-muted grid grid-cols-1 items-start gap-6 rounded-lg p-8 transition-colors duration-300 md:grid-cols-12">
+            {/* Date column */}
+            <div className="md:col-span-3">
+              <p className="text-muted-foreground text-[0.6875rem] font-bold tracking-widest uppercase">
+                {exp.period}
+              </p>
+              {exp.isCurrent && (
+                <span className="text-primary mt-2 inline-block font-mono text-[0.6875rem] tracking-wider uppercase">
+                  [Current]
+                </span>
+              )}
+            </div>
+
+            {/* Title + description column */}
+            <div className="md:col-span-6">
+              <h3 className="text-foreground group-hover:text-primary text-xl font-bold transition-colors duration-200">
+                {exp.title}
+              </h3>
+              <p className="text-muted-foreground mt-1 mb-3 text-sm">
+                {exp.company} · {exp.location}
+              </p>
+              {exp.description && (
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  {exp.description}
+                </p>
+              )}
+            </div>
+
+            {/* Tech tags column */}
+            <div className="flex flex-wrap gap-2 md:col-span-3 md:justify-end">
+              {exp.technologies.map((tech) => (
+                <span
+                  key={tech}
+                  className="bg-secondary text-secondary-foreground rounded-sm px-2 py-1 text-[10px] tracking-wide uppercase">
+                  {tech}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-
-        <div className="mx-auto">
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-4 md:left-1/2 md:transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-border"></div>
-
-            {experiences.map((experience, index) => (
-              <div key={experience.id} className="relative mb-8 md:mb-12">
-                {/* Timeline dot */}
-                <div className="absolute left-2 md:left-1/2 md:transform md:-translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background"></div>
-
-                {/* Content */}
-                <div
-                  className={`ml-12 md:ml-0 md:w-1/2 ${
-                    index % 2 === 0 ? "md:pr-8" : "md:ml-auto md:pl-8"
-                  }`}
-                >
-                  <Card className="shadow-lg">
-                    <CardHeader>
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                        <CardTitle className="text-lg md:text-xl">
-                          {experience.title}
-                        </CardTitle>
-                        <Badge
-                          className="w-fit mb-2 sm:mb-0"
-                          variant={
-                            experience.type === "Full-time"
-                              ? "default"
-                              : experience.type === "Freelance"
-                                ? "secondary"
-                                : "outline"
-                          }
-                        >
-                          {experience.type}
-                        </Badge>
-                      </div>
-                      <CardDescription className="space-y-1">
-                        <div className="flex items-center gap-2">
-                          <Building className="h-4 w-4" />
-                          <span className="font-semibold">
-                            {experience.company}
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <MapPin className="h-4 w-4" />
-                          <span>{experience.location}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Calendar className="h-4 w-4" />
-                          <span>{experience.period}</span>
-                        </div>
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2 mb-4">
-                        {experience.description.map((item, itemIndex) => (
-                          <li
-                            key={itemIndex}
-                            className="text-sm text-muted-foreground flex items-start gap-2"
-                          >
-                            <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      <div className="flex flex-wrap gap-2">
-                        {experience.technologies.map((tech) => (
-                          <Badge
-                            key={tech}
-                            variant="outline"
-                            className="text-xs"
-                          >
-                            {tech}
-                          </Badge>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );
 }
-

@@ -1,4 +1,4 @@
-/* 
+/*
   Developed by Tehaan Perera
   Website: https://www.tehaan.dev
   Project: Tehaan Perera's Portfolio
@@ -48,79 +48,91 @@ html {
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary-container: var(--on-primary-container);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+/* Light mode — clean blue-tinted white */
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --radius: 0.375rem;
+  --background: oklch(0.98 0.003 265);
+  --foreground: oklch(0.09 0.005 265);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: oklch(0.09 0.005 265);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.09 0.005 265);
+  --primary: oklch(0.47 0.28 265);
+  --primary-foreground: oklch(0.98 0 0);
+  --primary-container: oklch(0.47 0.28 265);
+  --on-primary-container: oklch(0.98 0 0);
+  --secondary: oklch(0.93 0.01 265);
+  --secondary-foreground: oklch(0.40 0.05 265);
+  --muted: oklch(0.95 0.005 265);
+  --muted-foreground: oklch(0.52 0.04 265);
+  --accent: oklch(0.93 0.01 265);
+  --accent-foreground: oklch(0.09 0.005 265);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --border: oklch(0.34 0.05 270 / 15%);
+  --input: oklch(0.34 0.05 270 / 12%);
+  --ring: oklch(0.47 0.28 265);
+  --chart-1: oklch(0.47 0.28 265);
+  --chart-2: oklch(0.60 0.22 290);
+  --chart-3: oklch(0.65 0.18 250);
+  --chart-4: oklch(0.55 0.24 280);
+  --chart-5: oklch(0.62 0.20 265);
+  --sidebar: oklch(0.97 0.005 265);
+  --sidebar-foreground: oklch(0.09 0.005 265);
+  --sidebar-primary: oklch(0.47 0.28 265);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.93 0.01 265);
+  --sidebar-accent-foreground: oklch(0.09 0.005 265);
+  --sidebar-border: oklch(0.34 0.05 270 / 15%);
+  --sidebar-ring: oklch(0.47 0.28 265);
 }
 
+/* Dark mode — Engineering Excellence palette */
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --background: oklch(0.09 0 0);
+  --foreground: oklch(0.91 0.007 60);
+  --card: oklch(0.13 0 0);
+  --card-foreground: oklch(0.91 0.007 60);
+  --popover: oklch(0.13 0 0);
+  --popover-foreground: oklch(0.91 0.007 60);
+  /* primary = Electric Blue periwinkle — for text, icons, borders */
+  --primary: oklch(0.80 0.12 265);
+  --primary-foreground: oklch(0.09 0.015 265);
+  /* primary-container = vivid blue — for filled button backgrounds */
+  --primary-container: oklch(0.47 0.28 265);
+  --on-primary-container: oklch(0.97 0.02 275);
+  /* surface hierarchy */
+  --secondary: oklch(0.25 0 0);
+  --secondary-foreground: oklch(0.62 0.05 270);
+  --muted: oklch(0.15 0 0);
+  --muted-foreground: oklch(0.80 0.04 270);
+  --accent: oklch(0.19 0 0);
+  --accent-foreground: oklch(0.91 0.007 60);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  /* ghost border — outline_variant at low opacity */
+  --border: oklch(0.34 0.05 270 / 20%);
+  --input: oklch(0.25 0 0);
+  --ring: oklch(0.80 0.12 265);
+  --chart-1: oklch(0.80 0.12 265);
+  --chart-2: oklch(0.75 0.18 290);
+  --chart-3: oklch(0.70 0.15 250);
+  --chart-4: oklch(0.65 0.20 280);
+  --chart-5: oklch(0.72 0.14 265);
+  --sidebar: oklch(0.13 0 0);
+  --sidebar-foreground: oklch(0.91 0.007 60);
+  --sidebar-primary: oklch(0.80 0.12 265);
+  --sidebar-primary-foreground: oklch(0.09 0.015 265);
+  --sidebar-accent: oklch(0.19 0 0);
+  --sidebar-accent-foreground: oklch(0.91 0.007 60);
+  --sidebar-border: oklch(0.34 0.05 270 / 20%);
+  --sidebar-ring: oklch(0.80 0.12 265);
 }
 
 @layer base {
@@ -128,47 +140,58 @@ html {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    @apply selection:bg-primary/20 selection:text-primary;
   }
 }
 
-/* Custom animations for lazy loading */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Tonal bloom — subtle radial gradient for hero/CTA backgrounds */
+.tonal-bloom {
+  background: radial-gradient(circle at center, oklch(0.47 0.28 265 / 0.05) 0%, transparent 70%);
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.6s ease-out forwards;
+/* Tech marquee fade mask */
+.marquee-fade {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
 }
 
-/* Smooth loading states */
+/* Tech marquee animation */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Ping animation for status badge */
+@keyframes ping-slow {
+  0% { transform: scale(1); opacity: 1; }
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+
+.animate-ping-slow {
+  animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Loading skeleton */
 .loading-skeleton {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, oklch(0.93 0.005 265) 25%, oklch(0.89 0.005 265) 50%, oklch(0.93 0.005 265) 75%);
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
 }
 
-@keyframes loading {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
+.dark .loading-skeleton {
+  background: linear-gradient(90deg, oklch(0.17 0 0) 25%, oklch(0.21 0 0) 50%, oklch(0.17 0 0) 75%);
+  background-size: 200% 100%;
 }
 
-/* Add these styles to your existing globals.css */
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
 
 /* Blog post content styling */
 .prose-content {
-  @apply text-gray-800 leading-relaxed;
+  @apply text-foreground leading-relaxed;
 }
 
 .prose-content h1,
@@ -177,28 +200,20 @@ html {
 .prose-content h4,
 .prose-content h5,
 .prose-content h6 {
-  @apply font-bold text-gray-900 mt-8 mb-4;
+  @apply font-bold text-foreground mt-8 mb-4;
 }
 
-.prose-content h1 {
-  @apply text-3xl max-lg:text-2xl;
-}
-.prose-content h2 {
-  @apply text-2xl max-lg:text-xl;
-}
-.prose-content h3 {
-  @apply text-xl max-lg:text-lg;
-}
-.prose-content h4 {
-  @apply text-lg max-lg:text-base;
-}
+.prose-content h1 { @apply text-3xl max-lg:text-2xl; }
+.prose-content h2 { @apply text-2xl max-lg:text-xl; }
+.prose-content h3 { @apply text-xl max-lg:text-lg; }
+.prose-content h4 { @apply text-lg max-lg:text-base; }
 
 .prose-content p {
-  @apply mb-4 text-base leading-7 max-lg:text-sm;
+  @apply mb-4 text-base leading-7 max-lg:text-sm text-foreground/80;
 }
 
 .prose-content a {
-  @apply text-blue-600 hover:text-blue-800 underline;
+  @apply text-primary hover:text-primary/80 underline underline-offset-2;
 }
 
 .prose-content ul,
@@ -206,28 +221,20 @@ html {
   @apply mb-4 ml-6;
 }
 
-.prose-content li {
-  @apply mb-2;
-}
-
-.prose-content ul li {
-  @apply list-disc;
-}
-
-.prose-content ol li {
-  @apply list-decimal;
-}
+.prose-content li { @apply mb-2; }
+.prose-content ul li { @apply list-disc; }
+.prose-content ol li { @apply list-decimal; }
 
 .prose-content blockquote {
-  @apply border-l-4 border-gray-300 pl-4 italic text-gray-600 my-6;
+  @apply border-l-4 border-primary/40 pl-4 italic text-muted-foreground my-6 bg-muted/30 py-2 rounded-r-lg;
 }
 
 .prose-content code {
-  @apply bg-gray-100 rounded px-1 py-0.5 text-sm font-mono;
+  @apply bg-muted rounded px-1.5 py-0.5 text-sm font-mono text-foreground;
 }
 
 .prose-content pre {
-  @apply bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto my-6;
+  @apply bg-foreground text-background rounded-xl p-4 overflow-x-auto my-6;
 }
 
 .prose-content pre code {
@@ -235,23 +242,18 @@ html {
 }
 
 .prose-content table {
-  @apply w-full border-collapse border border-gray-300 my-6;
+  @apply w-full border-collapse border border-border my-6;
 }
 
 .prose-content th,
 .prose-content td {
-  @apply border border-gray-300 px-4 py-2 text-left;
+  @apply border border-border px-4 py-2 text-left;
 }
 
-.prose-content th {
-  @apply bg-gray-50 font-semibold;
-}
+.prose-content th { @apply bg-muted font-semibold; }
 
 .prose-content img {
-  @apply max-w-full h-auto rounded-lg my-6;
+  @apply max-w-full h-auto rounded-xl my-6;
 }
 
-.prose-content hr {
-  @apply border-gray-300 my-8;
-}
-
+.prose-content hr { @apply border-border my-8; }

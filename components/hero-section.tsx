@@ -1,61 +1,62 @@
-import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { ArrowDown } from "lucide-react";
+import Link from "next/link";
 
 export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative py-10 md:py-28 lg:py-36 overflow-hidden"
-    >
-      <div className="container px-4 md:px-6 mx-auto">
-        <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_450px]">
-          <div className="flex flex-col justify-center space-y-4 order-2 lg:order-1">
-            <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                Tehaan Perera
-              </h1>
-              <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                {`Full Stack Developer crafting fast, scalable, and user-centric
-                web applications. With a strong foundation in React, Node.js,
-                and modern frameworks like Next.js, I build robust solutions
-                that prioritize performance, intuitive UX, and clean
-                architecture. Whether it's real-time dashboards or complex
-                form-driven platforms, I focus on solving real-world problems
-                with practical, elegant code.`}
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
-              <Button asChild size="lg">
-                <Link href="#projects">View Projects</Link>
-              </Button>
-              <Button variant="outline" size="lg" asChild>
-                <Link href="#contact">Contact Me</Link>
-              </Button>
-            </div>
-          </div>
-          <div className="flex items-center justify-center order-1 lg:order-2">
-            <div className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] lg:w-[400px] lg:h-[400px] rounded-full overflow-hidden border-4 border-background shadow-xl">
-              <Image
-                src="/tp.jpg"
-                alt="Tehaan Perera"
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-          </div>
+      className="relative mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-12 md:px-8">
+      {/* Tonal bloom background */}
+      <div className="tonal-bloom pointer-events-none absolute inset-0" />
+
+      {/* Left column */}
+      <div className="z-10 py-16 md:col-span-7 md:py-0">
+        <div className="mb-6 flex items-center gap-3">
+          <span className="bg-primary h-[1px] w-12 flex-shrink-0" />
+          <span className="text-primary text-[0.6875rem] font-medium tracking-[0.2em] uppercase">
+            Full Stack Developer
+          </span>
         </div>
-        <div className="flex justify-center mt-12">
-          <Button variant="ghost" size="icon" asChild>
-            <Link href="#projects" aria-label="Scroll to projects">
-              <ArrowDown className="h-6 w-6 animate-bounce" />
-            </Link>
-          </Button>
+
+        <h1 className="text-foreground mb-8 text-5xl leading-[0.95] font-extrabold tracking-tight md:text-6xl lg:text-7xl">
+          Building <br />
+          Digital <br />
+          <span className="text-primary">Experiences.</span>
+        </h1>
+
+        <p className="text-muted-foreground mb-10 max-w-lg text-base leading-relaxed md:text-lg">
+          Crafting fast, scalable web applications with React, Node.js, and
+          modern frameworks. Focused on clean architecture, performance, and
+          outstanding user experiences.
+        </p>
+
+        <div className="flex flex-wrap gap-4">
+          <Link
+            href="#projects"
+            className="bg-primary-container text-on-primary-container hover:bg-primary hover:text-primary-foreground inline-flex items-center gap-2 rounded-md px-6 py-3 font-semibold transition-colors duration-200">
+            View Projects
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+          <Link
+            href="#contact"
+            className="text-primary hover:bg-accent inline-flex items-center rounded-md px-6 py-3 font-semibold transition-colors duration-200">
+            Contact Me
+          </Link>
         </div>
+      </div>
+
+      {/* Right column — portrait */}
+      <div className="bg-card relative aspect-square overflow-hidden rounded-xl contrast-125 grayscale md:col-span-5 md:aspect-auto md:h-[520px]">
+        <Image
+          src="/tp.jpg"
+          alt="Tehaan Perera"
+          fill
+          className="object-cover object-top opacity-80 mix-blend-luminosity"
+          priority
+        />
+        <div className="from-background absolute inset-0 bg-gradient-to-t via-transparent to-transparent" />
       </div>
     </section>
   );
 }
-

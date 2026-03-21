@@ -1,162 +1,90 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
+const navLinks = [
+  { href: "/#hero", label: "Home" },
+  { href: "/blog", label: "Blog" },
+  { href: "/#contact", label: "Contact" },
+];
+
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-4 md:px-6 flex h-16 items-center justify-between max-md:p-3">
-        <Link href="/" className="font-bold text-xl">
-          DevPortfolio.
+    <header className="bg-background/70 fixed top-0 z-50 w-full shadow-[0_40px_40px_-10px_oklch(0_0_0/0.4)] backdrop-blur-md">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-8">
+        <Link
+          href="/"
+          className="text-foreground text-lg font-bold tracking-tight">
+          Tehaan<span className="text-primary">.</span>
         </Link>
 
-        {/* Mobile menu button */}
-        <button
-          className="md:hidden"
-          onClick={toggleMenu}
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Desktop nav */}
+        <nav className="hidden items-center gap-8 md:flex">
+          {navLinks.map((link, i) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={
+                i === 0
+                  ? "text-primary border-primary border-b-2 pb-1 text-sm font-semibold"
+                  : "text-muted-foreground hover:text-foreground text-sm transition-colors duration-200"
+              }>
+              {link.label}
+            </Link>
+          ))}
+        </nav>
 
-        {/* Desktop navigation */}
-        <div className="hidden md:flex items-center gap-6">
-          <nav className="flex gap-8">
-            <Link
-              href="/#hero"
-              className="text-sm font-medium hover:text-primary"
-            >
-              Home
-            </Link>
-            <Link
-              href="/blog"
-              className="text-sm font-medium hover:text-primary"
-            >
-              Blog
-            </Link>
-            <Link
-              href="/#projects"
-              className="text-sm font-medium hover:text-primary"
-            >
-              Projects
-            </Link>
-            <Link
-              href="/#experience"
-              className="text-sm font-medium hover:text-primary"
-            >
-              Experience
-            </Link>
-            <Link
-              href="/#credentials"
-              className="text-sm font-medium hover:text-primary"
-            >
-              Credentials
-            </Link>
-            <Link
-              href="/#skills"
-              className="text-sm font-medium hover:text-primary"
-            >
-              Skills
-            </Link>
-            <Link
-              href="/#contact"
-              className="text-sm font-medium hover:text-primary"
-            >
-              Contact
-            </Link>
-          </nav>
-        </div>
-        <Button size="sm" className="hidden md:block">
+        <div className="flex items-center gap-4">
           <Link
             href="https://calendar.app.google/7VhtRKka3953z2hq5"
             target="_blank"
             rel="noopener noreferrer"
-          >
+            className="bg-primary-container text-on-primary-container hidden items-center rounded-md px-4 py-2 text-sm font-semibold transition-opacity duration-200 hover:opacity-90 md:flex">
             Schedule a Call
           </Link>
-        </Button>
 
-        {/* Mobile navigation */}
-        <div
-          className={`absolute top-16 left-0 right-0 bg-background border-b md:hidden transition-transform duration-300 ease-in-out transform ${
-            isMenuOpen
-              ? "translate-y-0 opacity-100"
-              : "-translate-y-full opacity-0 pointer-events-none"
-          }`}
-        >
-          <nav className="flex flex-col p-4 space-y-2">
-            <Link
-              href="/#hero"
-              className="py-2 text-sm font-medium hover:text-primary"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Home
-            </Link>
-            <Link
-              href="/blog"
-              className="py-2 text-sm font-medium hover:text-primary"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Blog
-            </Link>
-            <Link
-              href="/#projects"
-              className="py-2 text-sm font-medium hover:text-primary"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Projects
-            </Link>
-            <Link
-              href="/#experience"
-              className="py-2 text-sm font-medium hover:text-primary"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Experience
-            </Link>
-            <Link
-              href="/#credentials"
-              className="py-2 text-sm font-medium hover:text-primary"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Credentials
-            </Link>
-            <Link
-              href="/#skills"
-              className="py-2 text-sm font-medium hover:text-primary"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Skills
-            </Link>
-            <Link
-              href="/#contact"
-              className="py-2 text-sm font-medium hover:text-primary"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Contact
-            </Link>
-            <Button size="sm" asChild className="mt-2">
-              <Link
-                href="https://calendar.app.google/7VhtRKka3953z2hq5"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Schedule a Call
-              </Link>
-            </Button>
-          </nav>
+          <button
+            className="hover:bg-accent/50 rounded-md p-2 transition-colors md:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}>
+            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
+      </div>
+
+      {/* Mobile nav */}
+      <div
+        className={`border-border bg-background/95 border-t backdrop-blur-md transition-all duration-300 md:hidden ${
+          isMenuOpen
+            ? "pointer-events-auto opacity-100"
+            : "pointer-events-none opacity-0"
+        }`}>
+        <nav className="flex flex-col gap-1 p-4">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-muted-foreground hover:text-foreground px-3 py-2.5 text-sm font-medium transition-colors"
+              onClick={() => setIsMenuOpen(false)}>
+              {link.label}
+            </Link>
+          ))}
+          <div className="pt-2">
+            <Link
+              href="https://calendar.app.google/7VhtRKka3953z2hq5"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-primary-container text-on-primary-container flex w-full items-center justify-center rounded-md px-4 py-2 text-sm font-semibold"
+              onClick={() => setIsMenuOpen(false)}>
+              Schedule a Call
+            </Link>
+          </div>
+        </nav>
       </div>
     </header>
   );
 }
-
