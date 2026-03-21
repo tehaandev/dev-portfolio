@@ -3,6 +3,7 @@
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { twMerge } from "tailwind-merge";
 
 const navLinks = [
   { href: "/#hero", label: "Home" },
@@ -14,7 +15,11 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-background/70 fixed top-0 z-50 w-full shadow-[0_40px_40px_-10px_oklch(0_0_0/0.4)] backdrop-blur-md">
+    <header
+      className={twMerge(
+        "fixed top-0 z-50 w-full",
+        "lg:bg-background/70 lg:shadow-[0_40px_40px_-10px_oklch(0_0_0/0.4)] lg:backdrop-blur-md",
+      )}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-8">
         <Link
           href="/"
@@ -58,7 +63,7 @@ export function Header() {
 
       {/* Mobile nav */}
       <div
-        className={`border-border bg-background/95 border-t backdrop-blur-md transition-all duration-300 md:hidden ${
+        className={`border-border bg-background/70 border-t backdrop-blur-md transition-all duration-300 md:hidden ${
           isMenuOpen
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none opacity-0"
