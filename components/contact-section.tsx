@@ -84,10 +84,10 @@ export function ContactSection() {
 
           <div className="space-y-4">
             <Link
-              href="mailto:hello@tehaan.me"
+              href="mailto:hello@tehaan.dev"
               className="text-muted-foreground hover:text-primary flex items-center gap-4 transition-colors duration-200">
               <Mail className="h-5 w-5 flex-shrink-0" />
-              hello@tehaan.me
+              hello@tehaan.dev
             </Link>
 
             <Link
