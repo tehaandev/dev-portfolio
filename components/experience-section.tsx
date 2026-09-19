@@ -63,7 +63,7 @@ export function ExperienceSection() {
               <p className="eyebrow text-foreground/70">{exp.period}</p>
               {exp.isCurrent && (
                 <p className="eyebrow mt-3 flex items-center gap-2">
-                  <span className="bg-foreground h-1.5 w-1.5 rounded-full" />
+                  <span className="bg-wine h-1.5 w-1.5 rounded-full" />
                   Current
                 </p>
               )}

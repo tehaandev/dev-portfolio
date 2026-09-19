@@ -36,6 +36,7 @@ html {
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-wine: var(--wine);
   --radius-sm: calc(var(--radius) - 1px);
   --radius-md: var(--radius);
   --radius-lg: calc(var(--radius) + 1px);
@@ -64,6 +65,7 @@ html {
   --border: oklch(0.2 0.004 60 / 11%);
   --input: oklch(0.2 0.004 60 / 22%);
   --ring: oklch(0.2 0.004 60 / 40%);
+  --wine: oklch(0.42 0.12 15);
 }
 
 /* Dark — deep, quiet charcoal */
@@ -86,6 +88,7 @@ html {
   --border: oklch(0.94 0.004 85 / 10%);
   --input: oklch(0.94 0.004 85 / 22%);
   --ring: oklch(0.94 0.004 85 / 40%);
+  --wine: oklch(0.42 0.12 15);
 }
 
 @layer base {
@@ -119,25 +122,50 @@ html {
 
 /* Tech marquee (component kept, not on homepage) */
 .marquee-fade {
-  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
-  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 12%,
+    black 88%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 12%,
+    black 88%,
+    transparent
+  );
 }
 
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 /* Loading skeleton */
 .loading-skeleton {
-  background: linear-gradient(90deg, var(--muted) 25%, var(--secondary) 50%, var(--muted) 75%);
+  background: linear-gradient(
+    90deg,
+    var(--muted) 25%,
+    var(--secondary) 50%,
+    var(--muted) 75%
+  );
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
 }
 
 @keyframes loading {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 /* Blog post content — editorial long-form */
@@ -154,25 +182,45 @@ html {
   @apply text-foreground mt-12 mb-4 font-serif leading-tight font-normal tracking-tight;
 }
 
-.prose-content h1 { @apply text-4xl max-lg:text-3xl; }
-.prose-content h2 { @apply text-3xl max-lg:text-2xl; }
-.prose-content h3 { @apply text-2xl max-lg:text-xl; }
-.prose-content h4 { @apply text-xl max-lg:text-lg; }
+.prose-content h1 {
+  @apply text-4xl max-lg:text-3xl;
+}
+.prose-content h2 {
+  @apply text-3xl max-lg:text-2xl;
+}
+.prose-content h3 {
+  @apply text-2xl max-lg:text-xl;
+}
+.prose-content h4 {
+  @apply text-xl max-lg:text-lg;
+}
 
-.prose-content p { @apply mb-6; }
+.prose-content p {
+  @apply mb-6;
+}
 
 .prose-content a {
   @apply text-foreground decoration-foreground/30 hover:decoration-foreground underline underline-offset-4 transition-colors;
 }
 
-.prose-content strong { @apply text-foreground font-semibold; }
+.prose-content strong {
+  @apply text-foreground font-semibold;
+}
 
 .prose-content ul,
-.prose-content ol { @apply mb-6 ml-6; }
+.prose-content ol {
+  @apply mb-6 ml-6;
+}
 
-.prose-content li { @apply mb-2 pl-1; }
-.prose-content ul li { @apply list-disc marker:text-muted-foreground; }
-.prose-content ol li { @apply list-decimal marker:text-muted-foreground; }
+.prose-content li {
+  @apply mb-2 pl-1;
+}
+.prose-content ul li {
+  @apply marker:text-muted-foreground list-disc;
+}
+.prose-content ol li {
+  @apply marker:text-muted-foreground list-decimal;
+}
 
 .prose-content blockquote {
   @apply border-foreground text-foreground my-10 border-l pl-6 font-serif text-2xl leading-snug italic;
@@ -199,8 +247,14 @@ html {
   @apply border-border border-b px-3 py-3 text-left;
 }
 
-.prose-content th { @apply eyebrow font-normal; }
+.prose-content th {
+  @apply eyebrow font-normal;
+}
 
-.prose-content img { @apply my-10 h-auto max-w-full; }
+.prose-content img {
+  @apply my-10 h-auto max-w-full;
+}
 
-.prose-content hr { @apply border-border my-12; }
+.prose-content hr {
+  @apply border-border my-12;
+}

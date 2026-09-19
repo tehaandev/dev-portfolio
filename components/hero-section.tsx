@@ -16,7 +16,7 @@ export function HeroSection() {
       <div className="grid grid-cols-1 items-end gap-12 md:grid-cols-12 md:gap-10">
         <div className="md:col-span-8">
           <p className="eyebrow mb-10 flex items-center gap-4">
-            <span className="bg-foreground/40 h-px w-10" aria-hidden />
+            <span className="bg-wine h-px w-10" aria-hidden />
             Full-Stack Software Engineer
           </p>
 
