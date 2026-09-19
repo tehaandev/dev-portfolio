@@ -97,7 +97,7 @@ html {
   }
   body {
     @apply bg-background text-foreground antialiased;
-    @apply selection:bg-foreground selection:text-background;
+    @apply selection:bg-wine selection:text-background;
     font-feature-settings: "ss01", "cv11";
   }
 }
@@ -109,7 +109,7 @@ html {
 
 /* Underline that draws in from the left on hover */
 @utility link-draw {
-  background-image: linear-gradient(currentColor, currentColor);
+  background-image: linear-gradient(var(--wine), var(--wine));
   background-size: 0% 1px;
   background-position: 0 100%;
   background-repeat: no-repeat;
@@ -223,7 +223,7 @@ html {
 }
 
 .prose-content blockquote {
-  @apply border-foreground text-foreground my-10 border-l pl-6 font-serif text-2xl leading-snug italic;
+  @apply border-wine text-foreground my-10 border-l pl-6 font-serif text-2xl leading-snug italic;
 }
 
 .prose-content code {

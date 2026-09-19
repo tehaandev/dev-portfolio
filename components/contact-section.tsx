@@ -79,7 +79,7 @@ export function ContactSection() {
   ] as const;
 
   const inputClass =
-    "border-input focus:border-foreground placeholder:text-muted-foreground/50 w-full border-b bg-transparent py-3 text-base transition-colors duration-300 focus:outline-none";
+    "border-input focus:border-wine placeholder:text-muted-foreground/50 w-full border-b bg-transparent py-3 text-base transition-colors duration-300 focus:outline-none";
 
   return (
     <section id="contact" className="mx-auto max-w-7xl px-6 md:px-10">
