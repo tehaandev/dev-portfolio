@@ -1,81 +1,68 @@
-import { Code2, Cloud, Database, FlaskConical } from "lucide-react";
+import { SectionHeading } from "@/components/section-heading";
 
 const coreStack = [
   "TypeScript",
-  "React.js",
+  "React",
   "Next.js",
   "Node.js",
   "NestJS",
   "PostgreSQL",
 ];
 
-const bentoCards = [
+const disciplines = [
   {
-    icon: <Code2 className="text-primary h-6 w-6" />,
     title: "Full-Stack Development",
     description:
-      "End-to-end web applications with React, Next.js, Node.js, and NestJS. Type-safe codebases with TypeScript throughout.",
+      "End-to-end web applications with React, Next.js, Node.js and NestJS. Type-safe codebases with TypeScript throughout.",
   },
   {
-    icon: <Cloud className="text-primary h-6 w-6" />,
     title: "Cloud & DevOps",
     description:
       "AWS infrastructure, Docker containerisation, and CI/CD pipelines with GitHub Actions for automated, reliable deployments.",
   },
   {
-    icon: <Database className="text-primary h-6 w-6" />,
-    title: "Databases",
+    title: "Data & Persistence",
     description:
-      "PostgreSQL, MongoDB, Redis, and MySQL. ORM experience with Prisma and Mongoose for type-safe, efficient queries.",
+      "PostgreSQL, MongoDB, Redis and MySQL. Prisma and Mongoose for type-safe, efficient queries.",
   },
   {
-    icon: <FlaskConical className="text-primary h-6 w-6" />,
     title: "Testing & Quality",
     description:
-      "Jest, Cypress, and React Testing Library for unit, integration, and end-to-end coverage ensuring production reliability.",
+      "Jest, Cypress and React Testing Library - unit, integration and end-to-end coverage for production reliability.",
   },
 ];
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="mx-auto max-w-7xl px-6 py-8 md:px-8">
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-12">
-        {/* Left: Primary Tooling card */}
-        <div className="bg-card flex flex-col justify-between rounded-lg p-8 md:col-span-4">
-          <span className="text-muted-foreground text-[0.6875rem] font-bold tracking-widest uppercase">
-            Core Stack
-          </span>
-          <div>
-            <h3 className="mt-4 mb-2 text-2xl font-bold">Primary Tooling</h3>
-            <p className="text-muted-foreground mb-6 text-sm">
-              Technologies I build with every day.
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {coreStack.map((tech) => (
-                <span
-                  key={tech}
-                  className="bg-secondary text-primary rounded-sm px-3 py-1 font-mono text-[0.6875rem] uppercase">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
+    <section id="skills" className="mx-auto max-w-7xl px-6 md:px-10">
+      <SectionHeading index="01" label="Expertise">
+        A small, deliberate toolkit -{" "}
+        <em className="text-muted-foreground">mastered, not collected.</em>
+      </SectionHeading>
+
+      <div className="grid grid-cols-1 gap-16 md:grid-cols-12 md:gap-10">
+        <div className="md:col-span-3">
+          <p className="eyebrow mb-6">Core stack</p>
+          <ul className="space-y-2 font-serif text-2xl">
+            {coreStack.map((tech) => (
+              <li key={tech}>{tech}</li>
+            ))}
+          </ul>
         </div>
 
-        {/* Right: 2×2 bento grid */}
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:col-span-8">
-          {bentoCards.map((card) => (
-            <div
-              key={card.title}
-              className="bg-accent hover:border-primary rounded-lg border-b-2 border-transparent p-8 transition-all duration-300">
-              {card.icon}
-              <h4 className="mt-4 mb-2 font-bold">{card.title}</h4>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                {card.description}
+        <ol className="grid grid-cols-1 gap-x-10 sm:grid-cols-2 md:col-span-9">
+          {disciplines.map((item, i) => (
+            <li key={item.title} className="border-border border-t py-8">
+              <span className="eyebrow">0{i + 1}</span>
+              <h3 className="mt-4 mb-3 font-serif text-3xl leading-tight">
+                {item.title}
+              </h3>
+              <p className="text-muted-foreground max-w-sm text-[0.9375rem] leading-relaxed">
+                {item.description}
               </p>
-            </div>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );

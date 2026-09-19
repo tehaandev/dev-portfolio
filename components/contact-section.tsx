@@ -1,7 +1,8 @@
 "use client";
 
+import { SectionHeading } from "@/components/section-heading";
 import { useFormSubmitAction } from "@/features/form-submit-query";
-import { Mail, Github, Linkedin, CheckCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import type React from "react";
 import { useState } from "react";
@@ -67,117 +68,123 @@ export function ContactSection() {
     }
   };
 
+  const fields = [
+    { name: "name", label: "Name", type: "text", placeholder: "Your name" },
+    {
+      name: "email",
+      label: "Email",
+      type: "email",
+      placeholder: "you@company.com",
+    },
+  ] as const;
+
+  const inputClass =
+    "border-input focus:border-foreground placeholder:text-muted-foreground/50 w-full border-b bg-transparent py-3 text-base transition-colors duration-300 focus:outline-none";
+
   return (
-    <section
-      id="contact"
-      className="mx-auto max-w-7xl px-6 pb-16 md:px-8 md:pb-24">
-      <div className="bg-card grid grid-cols-1 items-center gap-12 rounded-xl p-8 md:grid-cols-2 md:p-16">
-        {/* Left panel */}
-        <div>
-          <h2 className="mb-6 text-4xl leading-[1.05] font-extrabold tracking-tight">
-            Let&apos;s Work <br /> Together.
-          </h2>
-          <p className="text-muted-foreground mb-8 max-w-md leading-relaxed">
-            Have a project in mind or want to discuss opportunities? I&apos;d
-            love to hear from you.
+    <section id="contact" className="mx-auto max-w-7xl px-6 md:px-10">
+      <SectionHeading index="04" label="Contact">
+        Let&apos;s build something{" "}
+        <em className="text-muted-foreground">enduring.</em>
+      </SectionHeading>
+
+      <div className="grid grid-cols-1 gap-20 md:grid-cols-12 md:gap-10">
+        <div className="md:col-span-5">
+          <p className="text-muted-foreground max-w-sm text-[0.9375rem] leading-relaxed">
+            Have a project in mind or want to discuss an opportunity? Write to
+            me directly, or leave a note - I reply to every message.
           </p>
 
-          <div className="space-y-4">
-            <Link
-              href="mailto:hello@tehaan.dev"
-              className="text-muted-foreground hover:text-primary flex items-center gap-4 transition-colors duration-200">
-              <Mail className="h-5 w-5 flex-shrink-0" />
-              hello@tehaan.dev
-            </Link>
+          <Link
+            href="mailto:hello@tehaan.dev"
+            className="link-draw mt-10 inline-block pb-1 font-serif text-3xl md:text-4xl">
+            hello@tehaan.dev
+          </Link>
 
-            <Link
-              href="https://github.com/tehaandev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary flex items-center gap-4 transition-colors duration-200"
-              aria-label="GitHub">
-              <Github className="h-5 w-5" />
-              @tehaandev
-            </Link>
-            <Link
-              href="https://www.linkedin.com/in/tehaan-perera/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary flex items-center gap-4 transition-colors duration-200"
-              aria-label="LinkedIn">
-              <Linkedin className="h-5 w-5" />
-              in/tehaan-perera
-            </Link>
-          </div>
+          <dl className="mt-16 space-y-6">
+            {[
+              {
+                label: "GitHub",
+                value: "@tehaandev",
+                href: "https://github.com/tehaandev",
+              },
+              {
+                label: "LinkedIn",
+                value: "in/tehaan-perera",
+                href: "https://www.linkedin.com/in/tehaan-perera/",
+              },
+              {
+                label: "Calendar",
+                value: "Book a 30-minute call",
+                href: "https://calendar.app.google/7VhtRKka3953z2hq5",
+              },
+            ].map((item) => (
+              <div key={item.label} className="flex items-baseline gap-6">
+                <dt className="eyebrow w-24 shrink-0">{item.label}</dt>
+                <dd>
+                  <Link
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-draw pb-0.5 text-sm">
+                    {item.value}
+                  </Link>
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
 
-        {/* Right panel — form */}
-        <div className="bg-secondary rounded-lg p-8">
+        <div className="md:col-span-6 md:col-start-7">
           {isSubmitted ? (
-            <div className="flex flex-col items-center justify-center py-12 text-center">
-              <div className="bg-primary/10 mb-5 flex h-14 w-14 items-center justify-center rounded-full">
-                <CheckCircle className="text-primary h-7 w-7" />
-              </div>
-              <h3 className="mb-2 text-lg font-semibold">Message Sent!</h3>
-              <p className="text-muted-foreground max-w-[260px] text-sm">
-                Thank you for reaching out. I&apos;ll get back to you as soon as
-                possible.
+            <div className="border-border border-t pt-10">
+              <p className="eyebrow mb-4">Received</p>
+              <h3 className="font-serif text-4xl">Thank you.</h3>
+              <p className="text-muted-foreground mt-4 max-w-sm text-[0.9375rem] leading-relaxed">
+                Your message is on its way. I&apos;ll be in touch shortly.
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Name */}
-              <div>
-                <label className="text-muted-foreground mb-2 block text-[0.6875rem] font-bold tracking-widest uppercase">
-                  Name
-                </label>
-                <input
-                  name="name"
-                  value={formState.name}
-                  onChange={handleChange}
-                  placeholder="Your name"
-                  className="border-muted-foreground/30 focus:border-primary text-foreground placeholder:text-muted-foreground/40 w-full border-b bg-transparent px-0 py-3 text-sm transition-colors duration-200 focus:outline-none"
-                />
-                {errors.name && (
-                  <p className="text-destructive mt-1 text-xs">{errors.name}</p>
-                )}
-              </div>
+            <form onSubmit={handleSubmit} noValidate className="space-y-10">
+              {fields.map((field) => (
+                <div key={field.name}>
+                  <label htmlFor={field.name} className="eyebrow block">
+                    {field.label}
+                  </label>
+                  <input
+                    id={field.name}
+                    name={field.name}
+                    type={field.type}
+                    value={formState[field.name]}
+                    onChange={handleChange}
+                    placeholder={field.placeholder}
+                    aria-invalid={!!errors[field.name]}
+                    className={inputClass}
+                  />
+                  {errors[field.name] && (
+                    <p className="text-destructive mt-2 text-xs">
+                      {errors[field.name]}
+                    </p>
+                  )}
+                </div>
+              ))}
 
-              {/* Email */}
               <div>
-                <label className="text-muted-foreground mb-2 block text-[0.6875rem] font-bold tracking-widest uppercase">
-                  Email
-                </label>
-                <input
-                  name="email"
-                  type="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                  placeholder="your@email.com"
-                  className="border-muted-foreground/30 focus:border-primary text-foreground placeholder:text-muted-foreground/40 w-full border-b bg-transparent px-0 py-3 text-sm transition-colors duration-200 focus:outline-none"
-                />
-                {errors.email && (
-                  <p className="text-destructive mt-1 text-xs">
-                    {errors.email}
-                  </p>
-                )}
-              </div>
-
-              {/* Message */}
-              <div>
-                <label className="text-muted-foreground mb-2 block text-[0.6875rem] font-bold tracking-widest uppercase">
+                <label htmlFor="message" className="eyebrow block">
                   Message
                 </label>
                 <textarea
+                  id="message"
                   name="message"
                   value={formState.message}
                   onChange={handleChange}
-                  placeholder="Brief overview of your project or inquiry..."
+                  placeholder="A brief overview of your project or inquiry"
                   rows={4}
-                  className="border-muted-foreground/30 focus:border-primary text-foreground placeholder:text-muted-foreground/40 w-full resize-none border-b bg-transparent px-0 py-3 text-sm transition-colors duration-200 focus:outline-none"
+                  aria-invalid={!!errors.message}
+                  className={`${inputClass} resize-none`}
                 />
                 {errors.message && (
-                  <p className="text-destructive mt-1 text-xs">
+                  <p className="text-destructive mt-2 text-xs">
                     {errors.message}
                   </p>
                 )}
@@ -186,33 +193,12 @@ export function ContactSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="bg-primary-container text-on-primary-container w-full rounded-md py-4 text-xs font-bold tracking-widest uppercase transition-opacity duration-200 hover:opacity-90 disabled:opacity-60">
-                {isSubmitting ? (
-                  <span className="flex items-center justify-center gap-2">
-                    <svg
-                      className="h-4 w-4 animate-spin"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24">
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      />
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      />
-                    </svg>
-                    Sending...
-                  </span>
-                ) : (
-                  "Send Message"
-                )}
+                className="bg-foreground text-background hover:bg-foreground/85 group inline-flex items-center gap-3 px-7 py-4 text-[0.8125rem] tracking-wide transition-colors duration-300 disabled:opacity-60">
+                {isSubmitting ? "Sending…" : "Send message"}
+                <ArrowRight
+                  className="h-4 w-4 transition-transform duration-500 ease-(--ease-lux) group-hover:translate-x-1"
+                  strokeWidth={1.5}
+                />
               </button>
             </form>
           )}

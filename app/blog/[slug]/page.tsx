@@ -1,12 +1,3 @@
-import { getPostBySlug, getAllPostSlugs } from "@/lib/posts";
-import { notFound } from "next/navigation";
-import Link from "next/link";
-import Image from "next/image";
-import type { Metadata } from "next";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import {
   Carousel,
   CarouselContent,
@@ -14,7 +5,12 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { ArrowLeft, Calendar, User, Clock, Share2 } from "lucide-react";
+import { getPostBySlug, getAllPostSlugs } from "@/lib/posts";
+import { ArrowLeft } from "lucide-react";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
 interface Props {
   params: Promise<{
@@ -71,8 +67,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 function formatDate(dateString: string): string {
-  const date = new Date(dateString);
-  return date.toLocaleDateString("en-US", {
+  return new Date(dateString).toLocaleDateString("en-GB", {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -80,9 +75,7 @@ function formatDate(dateString: string): string {
 }
 
 function getReadingTime(content: string): number {
-  const wordsPerMinute = 200;
-  const wordCount = content.split(/\s+/).length;
-  return Math.ceil(wordCount / wordsPerMinute);
+  return Math.ceil(content.split(/\s+/).length / 200);
 }
 
 export default async function BlogPost({ params }: Props) {
@@ -93,155 +86,101 @@ export default async function BlogPost({ params }: Props) {
     notFound();
   }
 
+  const { title, date, author, tags, excerpt, cover, carousel } = post.metadata;
+
   return (
-    <div className="container max-w-4xl mx-auto px-4 py-8">
-      {/* Back to blog link */}
-      <Button variant="ghost" asChild className="mb-8 -ml-4">
-        <Link href="/blog" className="inline-flex items-center gap-2">
-          <ArrowLeft className="h-4 w-4" />
-          Back to Blog
-        </Link>
-      </Button>
+    <main className="mx-auto max-w-7xl px-6 pt-32 pb-32 md:px-10 md:pt-44">
+      <Link
+        href="/blog"
+        className="eyebrow hover:text-foreground group inline-flex items-center gap-3 transition-colors duration-300">
+        <ArrowLeft
+          className="h-3.5 w-3.5 transition-transform duration-500 ease-(--ease-lux) group-hover:-translate-x-1"
+          strokeWidth={1.5}
+        />
+        All writing
+      </Link>
 
-      <article className="space-y-8">
-        {/* Article Header */}
-        <Card>
-          <CardHeader className="space-y-6">
-            <div className="space-y-4">
-              <h1 className="text-4xl font-bold tracking-tight leading-tight">
-                {post.metadata.title}
-              </h1>
+      <article>
+        <header className="mx-auto mt-16 max-w-3xl text-center md:mt-24">
+          <p className="eyebrow">
+            <time dateTime={date}>{formatDate(date)}</time>
+            <span className="mx-3">·</span>
+            {getReadingTime(post.content)} min read
+          </p>
+          <h1 className="mt-8 font-serif text-5xl leading-[1.02] tracking-tight text-balance md:text-7xl">
+            {title}
+          </h1>
+          {excerpt && (
+            <p className="text-muted-foreground mx-auto mt-8 max-w-xl font-serif text-xl leading-snug italic md:text-2xl">
+              {excerpt}
+            </p>
+          )}
+          <p className="eyebrow mt-10">
+            {author && <>By {author}</>}
+            {author && tags && tags.length > 0 && (
+              <span className="mx-3">-</span>
+            )}
+            {tags?.join(" / ")}
+          </p>
+        </header>
 
-              {/* Metadata */}
-              <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-                <div className="flex items-center gap-1">
-                  <Calendar className="h-4 w-4" />
-                  <time dateTime={post.metadata.date}>
-                    {formatDate(post.metadata.date)}
-                  </time>
-                </div>
-
-                {post.metadata.author && (
-                  <div className="flex items-center gap-1">
-                    <User className="h-4 w-4" />
-                    <span>{post.metadata.author}</span>
-                  </div>
-                )}
-
-                <div className="flex items-center gap-1">
-                  <Clock className="h-4 w-4" />
-                  <span>{getReadingTime(post.content)} min read</span>
-                </div>
-              </div>
-
-              {/* Tags */}
-              {post.metadata.tags && post.metadata.tags.length > 0 && (
-                <div className="flex flex-wrap gap-2">
-                  {post.metadata.tags.map((tag: string) => (
-                    <Badge key={tag} variant="secondary">
-                      {tag}
-                    </Badge>
+        {(cover || (carousel && carousel.length > 0)) && (
+          <div className="mt-16 md:mt-24">
+            {carousel && carousel.length > 0 ? (
+              <Carousel className="w-full">
+                <CarouselContent>
+                  {carousel.map((image, index) => (
+                    <CarouselItem key={index}>
+                      <div className="bg-card relative aspect-video overflow-hidden">
+                        <Image
+                          src={image}
+                          alt={`${title} - Image ${index + 1}`}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    </CarouselItem>
                   ))}
-                </div>
-              )}
-
-              {/* Excerpt */}
-              {post.metadata.excerpt && (
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  {post.metadata.excerpt}
-                </p>
-              )}
-            </div>
-
-            <Separator />
-
-            {/* Share button */}
-            <div className="flex justify-between items-center">
-              <div className="text-sm text-muted-foreground">
-                Published on {formatDate(post.metadata.date)}
+                </CarouselContent>
+                {carousel.length > 1 && (
+                  <>
+                    <CarouselPrevious className="left-4" />
+                    <CarouselNext className="right-4" />
+                  </>
+                )}
+              </Carousel>
+            ) : (
+              <div className="bg-card relative aspect-video overflow-hidden">
+                <Image src={cover!} alt={title} fill className="object-cover" />
               </div>
-              <Button variant="outline" size="sm">
-                <Share2 className="h-4 w-4 mr-2" />
-                Share
-              </Button>
-            </div>
-          </CardHeader>
-        </Card>
-
-        {/* Featured Image/Carousel */}
-        {(post.metadata.cover || post.metadata.carousel) && (
-          <Card>
-            <CardContent className="p-6">
-              {post.metadata.carousel && post.metadata.carousel.length > 0 ? (
-                <Carousel className="w-full">
-                  <CarouselContent>
-                    {post.metadata.carousel.map((image, index) => (
-                      <CarouselItem key={index}>
-                        <div className="relative aspect-video overflow-hidden rounded-lg">
-                          <Image
-                            src={image || "/placeholder.svg"}
-                            alt={`${post.metadata.title} - Image ${index + 1}`}
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                  {post.metadata.carousel.length > 1 && (
-                    <>
-                      <CarouselPrevious className="left-4" />
-                      <CarouselNext className="right-4" />
-                    </>
-                  )}
-                </Carousel>
-              ) : post.metadata.cover ? (
-                <div className="relative aspect-video overflow-hidden rounded-lg">
-                  <Image
-                    src={post.metadata.cover || "/placeholder.svg"}
-                    alt={post.metadata.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              ) : null}
-            </CardContent>
-          </Card>
+            )}
+          </div>
         )}
 
-        {/* Article Content */}
-        <Card>
-          <CardContent className="pt-8">
-            <div
-              className="prose-content"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
-          </CardContent>
-        </Card>
+        <div
+          className="prose-content mx-auto mt-16 max-w-2xl md:mt-24"
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
 
-        {/* Article Footer */}
-        <Card>
-          <CardContent className="pt-6">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <div className="space-y-1">
-                <p className="text-sm font-medium">Thanks for reading!</p>
-                <p className="text-sm text-muted-foreground">
-                  Have thoughts or questions? Feel free to reach out.
-                </p>
-              </div>
-              <div className="flex gap-2">
-                <Button variant="outline" size="sm" asChild>
-                  <Link href="/blog">More Posts</Link>
-                </Button>
-                <Button size="sm" asChild>
-                  <Link href="/#contact">Get in Touch</Link>
-                </Button>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+        <footer className="border-border mx-auto mt-24 flex max-w-2xl flex-col gap-8 border-t pt-10 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="font-serif text-3xl">Thanks for reading.</p>
+            <p className="text-muted-foreground mt-2 text-sm">
+              Thoughts or questions? I&apos;d love to hear them.
+            </p>
+          </div>
+          <div className="flex items-center gap-8">
+            <Link href="/blog" className="link-draw pb-0.5 text-[0.8125rem]">
+              More writing
+            </Link>
+            <Link
+              href="/#contact"
+              className="bg-foreground text-background hover:bg-foreground/85 px-6 py-3 text-[0.8125rem] tracking-wide transition-colors duration-300">
+              Get in touch
+            </Link>
+          </div>
+        </footer>
       </article>
-    </div>
+    </main>
   );
 }
-

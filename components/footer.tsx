@@ -1,36 +1,34 @@
 import dayjs from "dayjs";
 import Link from "next/link";
 
+const links = [
+  { href: "https://github.com/tehaandev", label: "GitHub" },
+  { href: "https://www.linkedin.com/in/tehaan-perera/", label: "LinkedIn" },
+  { href: "https://calendar.app.google/7VhtRKka3953z2hq5", label: "Schedule" },
+];
+
 export function Footer() {
   return (
-    <footer className="border-border bg-card w-full border-t px-6 py-12 md:px-8">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 text-xs font-medium tracking-widest uppercase md:flex-row">
-        <div className="text-muted-foreground">
-          © {dayjs().year()} Tehaan Perera. All rights reserved.
+    <footer className="mx-auto max-w-7xl px-6 md:px-10">
+      <div className="border-border flex flex-col gap-10 border-t py-12 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p className="font-serif text-3xl">Tehaan Perera</p>
+          <p className="eyebrow mt-3">
+            © {dayjs().year().toString()} - Designed &amp; built in-house
+          </p>
         </div>
-        <div className="flex gap-8">
-          <Link
-            href="https://github.com/tehaandev"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-primary transition-colors duration-200">
-            GitHub
-          </Link>
-          <Link
-            href="https://www.linkedin.com/in/tehaan-perera/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-primary transition-colors duration-200">
-            LinkedIn
-          </Link>
-          <Link
-            href="https://calendar.app.google/7VhtRKka3953z2hq5"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-primary transition-colors duration-200">
-            Schedule
-          </Link>
-        </div>
+        <nav className="flex gap-8">
+          {links.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-draw text-muted-foreground hover:text-foreground pb-0.5 text-[0.8125rem] tracking-wide transition-colors duration-300">
+              {link.label}
+            </Link>
+          ))}
+        </nav>
       </div>
     </footer>
   );

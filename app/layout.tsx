@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "sonner";
+import { Toaster } from "@/components/ui/sonner";
+import { ThemeProvider } from "next-themes";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -14,6 +15,13 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  weight: "400",
+  style: ["normal", "italic"],
   subsets: ["latin"],
 });
 
@@ -87,14 +95,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} antialiased`}
       >
-        <Toaster position="top-center" richColors />
-        <Header />
-        <TransitionWrapper>{children}</TransitionWrapper>
-        <Footer />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Toaster position="bottom-center" />
+          <Header />
+          <TransitionWrapper>{children}</TransitionWrapper>
+          <Footer />
+        </ThemeProvider>
         <SpeedInsights />
         {/* 
           Developed by Tehaan Perera
