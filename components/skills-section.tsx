@@ -1,3 +1,4 @@
+import { FadeIn } from "@/components/FadeIn";
 import { SectionHeading } from "@/components/section-heading";
 
 const coreStack = [
@@ -34,35 +35,38 @@ const disciplines = [
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="mx-auto max-w-7xl px-6 md:px-10">
-      <SectionHeading index="01" label="Expertise">
-        A small, deliberate toolkit -{" "}
-        <em className="text-muted-foreground">mastered, not collected.</em>
+    <section id="skills" className="mx-auto max-w-6xl px-5 md:px-8">
+      <SectionHeading label="Expertise">
+        A small, deliberate toolkit.{" "}
+        <span className="text-muted-foreground">Mastered, not collected.</span>
       </SectionHeading>
 
-      <div className="grid grid-cols-1 gap-16 md:grid-cols-12 md:gap-10">
-        <div className="md:col-span-3">
-          <p className="eyebrow mb-6">Core stack</p>
-          <ul className="space-y-2 font-serif text-2xl">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <FadeIn className="surface p-7 sm:col-span-2 lg:col-span-1 lg:row-span-2">
+          <h3 className="text-muted-foreground text-sm font-medium">
+            Core stack
+          </h3>
+          <ul className="mt-5 flex flex-wrap gap-2 lg:flex-col lg:items-start lg:gap-3">
             {coreStack.map((tech) => (
-              <li key={tech}>{tech}</li>
+              <li
+                key={tech}
+                className="bg-secondary rounded-full px-4 py-1.5 text-[0.9375rem] font-medium lg:bg-transparent lg:p-0 lg:text-[1.75rem] lg:leading-tight lg:font-semibold lg:tracking-[-0.025em]">
+                {tech}
+              </li>
             ))}
           </ul>
-        </div>
+        </FadeIn>
 
-        <ol className="grid grid-cols-1 gap-x-10 sm:grid-cols-2 md:col-span-9">
-          {disciplines.map((item, i) => (
-            <li key={item.title} className="border-border border-t py-8">
-              <span className="eyebrow">0{i + 1}</span>
-              <h3 className="mt-4 mb-3 font-serif text-3xl leading-tight">
-                {item.title}
-              </h3>
-              <p className="text-muted-foreground max-w-sm text-[0.9375rem] leading-relaxed">
-                {item.description}
-              </p>
-            </li>
-          ))}
-        </ol>
+        {disciplines.map((item, i) => (
+          <FadeIn key={item.title} delay={i * 60} className="surface p-7">
+            <h3 className="text-xl font-semibold tracking-[-0.02em]">
+              {item.title}
+            </h3>
+            <p className="text-muted-foreground mt-2 text-[0.9375rem] leading-relaxed">
+              {item.description}
+            </p>
+          </FadeIn>
+        ))}
       </div>
     </section>
   );

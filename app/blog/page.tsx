@@ -1,5 +1,5 @@
 import { getAllPosts } from "@/lib/posts";
-import { ArrowUpRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -40,57 +40,56 @@ export default function BlogPage() {
   const posts = getAllPosts();
 
   return (
-    <main className="mx-auto min-h-[80vh] max-w-7xl px-6 pt-36 pb-32 md:px-10 md:pt-48">
-      <header className="mb-20 grid grid-cols-1 gap-6 md:mb-28 md:grid-cols-12">
-        <p className="eyebrow md:col-span-3">
-          Journal - {posts.length} {posts.length === 1 ? "entry" : "entries"}
+    <main className="mx-auto min-h-[80vh] max-w-4xl px-5 pt-32 pb-28 md:px-8 md:pt-40">
+      <header className="mb-12 md:mb-16">
+        <p className="eyebrow">Journal</p>
+        <h1 className="mt-3 text-5xl leading-[1.05] font-semibold tracking-[-0.035em] md:text-7xl">
+          Writing
+        </h1>
+        <p className="text-muted-foreground mt-5 max-w-md text-lg leading-relaxed">
+          Notes on web development, technology, and the craft of building
+          software that lasts.
         </p>
-        <div className="md:col-span-9">
-          <h1 className="font-serif text-6xl leading-[0.95] tracking-tight md:text-8xl">
-            Writing
-          </h1>
-          <p className="text-muted-foreground mt-8 max-w-md text-[0.9375rem] leading-relaxed">
-            Notes on web development, technology, and the craft of building
-            software that lasts.
-          </p>
-        </div>
       </header>
 
       {posts.length === 0 ? (
-        <p className="border-border text-muted-foreground border-t pt-8 font-serif text-2xl italic">
+        <p className="surface text-muted-foreground p-8 text-center text-lg">
           New entries are in progress. Check back soon.
         </p>
       ) : (
-        <ol className="border-border border-b">
+        <ol className="surface overflow-hidden">
           {posts.map((post) => (
             <li key={post.slug}>
               <Link
                 href={`/blog/${post.slug}`}
-                className="group border-border grid grid-cols-1 gap-3 border-t py-10 md:grid-cols-12 md:gap-10">
-                <div className="eyebrow md:col-span-3">
-                  <time dateTime={post.metadata.date}>
-                    {formatDate(post.metadata.date)}
-                  </time>
-                  <span className="mx-2">·</span>
-                  {getReadingTime(post.content || "")} min
-                </div>
-                <div className="md:col-span-8">
-                  <h2 className="font-serif text-3xl leading-tight transition-opacity duration-300 group-hover:opacity-70 md:text-4xl">
+                className="group after:bg-border hover:bg-secondary/50 active:bg-secondary relative flex items-center gap-6 px-6 py-7 transition-colors after:absolute after:inset-x-6 after:bottom-0 after:h-px md:px-8 md:after:inset-x-8 [li:last-child_&]:after:hidden">
+                <div className="min-w-0 flex-1">
+                  <p className="text-muted-foreground text-sm">
+                    <time dateTime={post.metadata.date}>
+                      {formatDate(post.metadata.date)}
+                    </time>
+                    <span className="mx-1.5">·</span>
+                    {getReadingTime(post.content || "")} min read
+                  </p>
+                  <h2 className="mt-1.5 text-2xl font-semibold tracking-[-0.022em] md:text-[1.75rem]">
                     {post.metadata.title}
                   </h2>
-                  <p className="text-muted-foreground mt-4 line-clamp-2 max-w-2xl text-[0.9375rem] leading-relaxed">
+                  <p className="text-muted-foreground mt-2 line-clamp-2 max-w-2xl text-[0.9375rem] leading-relaxed">
                     {post.metadata.excerpt}
                   </p>
                   {post.metadata.tags && post.metadata.tags.length > 0 && (
-                    <p className="eyebrow mt-5">
-                      {post.metadata.tags.slice(0, 4).join(" / ")}
-                    </p>
+                    <ul className="mt-4 flex flex-wrap gap-1.5">
+                      {post.metadata.tags.slice(0, 4).map((tag) => (
+                        <li
+                          key={tag}
+                          className="bg-secondary text-muted-foreground rounded-full px-2.5 py-0.5 text-xs font-medium">
+                          {tag}
+                        </li>
+                      ))}
+                    </ul>
                   )}
                 </div>
-                <ArrowUpRight
-                  className="text-muted-foreground group-hover:text-foreground hidden h-6 w-6 justify-self-end transition-[transform,color] duration-500 ease-(--ease-lux) group-hover:translate-x-1 group-hover:-translate-y-1 md:col-span-1 md:block"
-                  strokeWidth={1.25}
-                />
+                <ChevronRight className="text-muted-foreground/60 group-hover:text-foreground h-5 w-5 shrink-0 transition-[translate,color] duration-300 ease-(--ease-spring) group-hover:translate-x-0.5" />
               </Link>
             </li>
           ))}

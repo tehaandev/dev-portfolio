@@ -8,12 +8,12 @@ import { Suspense, lazy } from "react";
 const ContactSection = lazy(() =>
   import("@/components/contact-section").then((mod) => ({
     default: mod.ContactSection,
-  }))
+  })),
 );
 
 export default function Home() {
   return (
-    <main className="space-y-32 pb-32 md:space-y-48 md:pb-48">
+    <main className="space-y-28 pb-28 md:space-y-40 md:pb-40">
       <HeroSection />
       <SkillsSection />
       <ExperienceSection />

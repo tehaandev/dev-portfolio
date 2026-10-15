@@ -1,3 +1,4 @@
+import { FadeIn } from "@/components/FadeIn";
 import { SectionHeading } from "@/components/section-heading";
 
 const experiences = [
@@ -49,48 +50,59 @@ const experiences = [
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="mx-auto max-w-7xl px-6 md:px-10">
-      <SectionHeading index="02" label="Experience">
-        Where the work has <em className="text-muted-foreground">happened.</em>
+    <section id="experience" className="mx-auto max-w-6xl px-5 md:px-8">
+      <SectionHeading label="Experience">
+        Where the work has happened.
       </SectionHeading>
 
-      <ol className="border-border border-b">
-        {experiences.map((exp) => (
-          <li
-            key={exp.id}
-            className="border-border group grid grid-cols-1 gap-4 border-t py-10 md:grid-cols-12 md:gap-10">
-            <div className="md:col-span-3">
-              <p className="eyebrow text-foreground/70">{exp.period}</p>
-              {exp.isCurrent && (
-                <p className="eyebrow mt-3 flex items-center gap-2">
-                  <span className="bg-wine h-1.5 w-1.5 rounded-full" />
-                  Current
+      <FadeIn>
+        <ol className="surface overflow-hidden">
+          {experiences.map((exp) => (
+            <li
+              key={exp.id}
+              // Inset separator between rows, like an iOS grouped list
+              className="after:bg-border relative grid grid-cols-1 gap-3 px-6 py-7 after:absolute after:inset-x-6 after:bottom-0 after:h-px last:after:hidden md:grid-cols-12 md:gap-8 md:px-8 md:after:inset-x-8">
+              <div className="md:col-span-3">
+                <p className="text-muted-foreground text-sm tabular-nums">
+                  {exp.period}
                 </p>
-              )}
-            </div>
+                {exp.isCurrent && (
+                  <p className="bg-wine/10 text-wine mt-2 inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-semibold">
+                    <span className="bg-wine h-1.5 w-1.5 rounded-full" />
+                    Current
+                  </p>
+                )}
+              </div>
 
-            <div className="md:col-span-6">
-              <h3 className="font-serif text-3xl leading-tight md:text-4xl">
-                {exp.company}
-              </h3>
-              <p className="text-muted-foreground mt-2 text-sm">
-                {exp.title} · {exp.location}
-              </p>
-              {exp.description && (
-                <p className="text-muted-foreground mt-6 max-w-xl text-[0.9375rem] leading-relaxed">
-                  {exp.description}
+              <div className="md:col-span-6">
+                <h3 className="text-2xl font-semibold tracking-[-0.022em]">
+                  {exp.company}
+                </h3>
+                <p className="text-muted-foreground mt-1 text-[0.9375rem]">
+                  {exp.title} · {exp.location}
                 </p>
-              )}
-            </div>
+                {exp.description && (
+                  <p className="text-foreground/80 mt-4 max-w-xl text-[0.9375rem] leading-relaxed">
+                    {exp.description}
+                  </p>
+                )}
+              </div>
 
-            {exp.technologies.length > 0 && (
-              <p className="eyebrow leading-6 md:col-span-3 md:text-right">
-                {exp.technologies.join(" / ")}
-              </p>
-            )}
-          </li>
-        ))}
-      </ol>
+              {exp.technologies.length > 0 && (
+                <ul className="flex flex-wrap content-start gap-1.5 md:col-span-3 md:justify-end">
+                  {exp.technologies.map((tech) => (
+                    <li
+                      key={tech}
+                      className="bg-secondary text-muted-foreground rounded-full px-2.5 py-0.5 text-xs font-medium">
+                      {tech}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ol>
+      </FadeIn>
     </section>
   );
 }

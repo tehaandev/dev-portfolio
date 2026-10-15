@@ -1,8 +1,9 @@
 "use client";
 
+import { FadeIn } from "@/components/FadeIn";
 import { SectionHeading } from "@/components/section-heading";
 import { useFormSubmitAction } from "@/features/form-submit-query";
-import { ArrowRight } from "lucide-react";
+import { CheckCircle2, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import type React from "react";
 import { useState } from "react";
@@ -18,17 +19,30 @@ export function ContactSection() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
+  const validateField = (name: string, value: string) => {
+    if (!value.trim())
+      return `${name[0].toUpperCase()}${name.slice(1)} is required`;
+    if (name === "email" && !/^\S+@\S+\.\S+$/.test(value))
+      return "Email is invalid";
+  };
+
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
-    if (!formState.name.trim()) newErrors.name = "Name is required";
-    if (!formState.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/^\S+@\S+\.\S+$/.test(formState.email)) {
-      newErrors.email = "Email is invalid";
+    for (const [name, value] of Object.entries(formState)) {
+      const error = validateField(name, value);
+      if (error) newErrors[name] = error;
     }
-    if (!formState.message.trim()) newErrors.message = "Message is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
+  };
+
+  // Validate inline as each field is left, not only on submit
+  const handleBlur = (
+    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = e.target;
+    const error = validateField(name, value);
+    if (error) setErrors((prev) => ({ ...prev, [name]: error }));
   };
 
   const handleChange = (
@@ -79,130 +93,144 @@ export function ContactSection() {
   ] as const;
 
   const inputClass =
-    "border-input focus:border-wine placeholder:text-muted-foreground/50 w-full border-b bg-transparent py-3 text-base transition-colors duration-300 focus:outline-none";
+    "bg-secondary placeholder:text-muted-foreground/70 focus:ring-wine aria-invalid:ring-destructive w-full rounded-xl px-4 py-3 text-[1.0625rem] transition-shadow duration-200 focus:ring-2 focus:outline-none aria-invalid:ring-2";
+
+  const links = [
+    {
+      label: "GitHub",
+      value: "@tehaandev",
+      href: "https://github.com/tehaandev",
+    },
+    {
+      label: "LinkedIn",
+      value: "in/tehaan-perera",
+      href: "https://www.linkedin.com/in/tehaan-perera/",
+    },
+    {
+      label: "Calendar",
+      value: "Book a 30-minute call",
+      href: "https://calendar.app.google/7VhtRKka3953z2hq5",
+    },
+  ];
 
   return (
-    <section id="contact" className="mx-auto max-w-7xl px-6 md:px-10">
-      <SectionHeading index="04" label="Contact">
+    <section id="contact" className="mx-auto max-w-6xl px-5 md:px-8">
+      <SectionHeading label="Contact">
         Let&apos;s build something{" "}
-        <em className="text-muted-foreground">enduring.</em>
+        <span className="text-muted-foreground">enduring.</span>
       </SectionHeading>
 
-      <div className="grid grid-cols-1 gap-20 md:grid-cols-12 md:gap-10">
-        <div className="md:col-span-5">
-          <p className="text-muted-foreground max-w-sm text-[0.9375rem] leading-relaxed">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-12">
+        <FadeIn className="md:col-span-5">
+          <p className="text-muted-foreground max-w-sm text-lg leading-relaxed">
             Have a project in mind or want to discuss an opportunity? Write to
-            me directly, or leave a note - I reply to every message.
+            me directly, or leave a note. I reply to every message.
           </p>
 
           <Link
             href="mailto:hello@tehaan.dev"
-            className="link-draw mt-10 inline-block pb-1 font-serif text-3xl md:text-4xl">
+            className="link mt-6 inline-block text-2xl font-semibold tracking-[-0.02em] md:text-3xl">
             hello@tehaan.dev
           </Link>
 
-          <dl className="mt-16 space-y-6">
-            {[
-              {
-                label: "GitHub",
-                value: "@tehaandev",
-                href: "https://github.com/tehaandev",
-              },
-              {
-                label: "LinkedIn",
-                value: "in/tehaan-perera",
-                href: "https://www.linkedin.com/in/tehaan-perera/",
-              },
-              {
-                label: "Calendar",
-                value: "Book a 30-minute call",
-                href: "https://calendar.app.google/7VhtRKka3953z2hq5",
-              },
-            ].map((item) => (
-              <div key={item.label} className="flex items-baseline gap-6">
-                <dt className="eyebrow w-24 shrink-0">{item.label}</dt>
-                <dd>
-                  <Link
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="link-draw pb-0.5 text-sm">
+          <ul className="surface mt-10 overflow-hidden">
+            {links.map((item) => (
+              <li key={item.label}>
+                <Link
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="after:bg-border hover:bg-secondary/60 active:bg-secondary relative flex items-center gap-4 px-5 py-3.5 transition-colors after:absolute after:right-0 after:bottom-0 after:left-5 after:h-px [li:last-child_&]:after:hidden">
+                  <span className="w-20 shrink-0 text-[0.9375rem]">
+                    {item.label}
+                  </span>
+                  <span className="text-muted-foreground flex-1 truncate text-[0.9375rem]">
                     {item.value}
-                  </Link>
-                </dd>
-              </div>
+                  </span>
+                  <ChevronRight className="text-muted-foreground/60 h-4 w-4 shrink-0" />
+                </Link>
+              </li>
             ))}
-          </dl>
-        </div>
+          </ul>
+        </FadeIn>
 
-        <div className="md:col-span-6 md:col-start-7">
-          {isSubmitted ? (
-            <div className="border-border border-t pt-10">
-              <p className="eyebrow mb-4">Received</p>
-              <h3 className="font-serif text-4xl">Thank you.</h3>
-              <p className="text-muted-foreground mt-4 max-w-sm text-[0.9375rem] leading-relaxed">
-                Your message is on its way. I&apos;ll be in touch shortly.
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} noValidate className="space-y-10">
-              {fields.map((field) => (
-                <div key={field.name}>
-                  <label htmlFor={field.name} className="eyebrow block">
-                    {field.label}
-                  </label>
-                  <input
-                    id={field.name}
-                    name={field.name}
-                    type={field.type}
-                    value={formState[field.name]}
-                    onChange={handleChange}
-                    placeholder={field.placeholder}
-                    aria-invalid={!!errors[field.name]}
-                    className={inputClass}
-                  />
-                  {errors[field.name] && (
-                    <p className="text-destructive mt-2 text-xs">
+        <FadeIn delay={60} className="md:col-span-6 md:col-start-7">
+          <div className="surface p-6 md:p-8">
+            {isSubmitted ? (
+              <div className="animate-in fade-in zoom-in-95 py-10 text-center duration-500">
+                <CheckCircle2 className="text-wine mx-auto h-12 w-12" />
+                <h3 className="mt-4 text-2xl font-semibold tracking-[-0.022em]">
+                  Thank you.
+                </h3>
+                <p className="text-muted-foreground mx-auto mt-2 max-w-xs text-[0.9375rem] leading-relaxed">
+                  Your message is on its way. I&apos;ll be in touch shortly.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} noValidate className="space-y-5">
+                {fields.map((field) => (
+                  <div key={field.name}>
+                    <label
+                      htmlFor={field.name}
+                      className="mb-1.5 block text-sm font-medium">
+                      {field.label}
+                    </label>
+                    <input
+                      id={field.name}
+                      name={field.name}
+                      type={field.type}
+                      value={formState[field.name]}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      placeholder={field.placeholder}
+                      autoComplete={field.name}
+                      aria-invalid={!!errors[field.name]}
+                      aria-describedby={`${field.name}-error`}
+                      className={inputClass}
+                    />
+                    <p
+                      id={`${field.name}-error`}
+                      className="text-destructive mt-1.5 min-h-4 text-[0.8125rem]">
                       {errors[field.name]}
                     </p>
-                  )}
-                </div>
-              ))}
+                  </div>
+                ))}
 
-              <div>
-                <label htmlFor="message" className="eyebrow block">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formState.message}
-                  onChange={handleChange}
-                  placeholder="A brief overview of your project or inquiry"
-                  rows={4}
-                  aria-invalid={!!errors.message}
-                  className={`${inputClass} resize-none`}
-                />
-                {errors.message && (
-                  <p className="text-destructive mt-2 text-xs">
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="mb-1.5 block text-sm font-medium">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formState.message}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    placeholder="A brief overview of your project or inquiry"
+                    rows={5}
+                    aria-invalid={!!errors.message}
+                    aria-describedby="message-error"
+                    className={`${inputClass} resize-none`}
+                  />
+                  <p
+                    id="message-error"
+                    className="text-destructive mt-1.5 min-h-4 text-[0.8125rem]">
                     {errors.message}
                   </p>
-                )}
-              </div>
+                </div>
 
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="bg-foreground text-background hover:bg-foreground/85 group inline-flex items-center gap-3 px-7 py-4 text-[0.8125rem] tracking-wide transition-colors duration-300 disabled:opacity-60">
-                {isSubmitting ? "Sending…" : "Send message"}
-                <ArrowRight
-                  className="h-4 w-4 transition-transform duration-500 ease-(--ease-lux) group-hover:translate-x-1"
-                  strokeWidth={1.5}
-                />
-              </button>
-            </form>
-          )}
-        </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="btn-primary w-full">
+                  {isSubmitting ? "Sending…" : "Send message"}
+                </button>
+              </form>
+            )}
+          </div>
+        </FadeIn>
       </div>
     </section>
   );

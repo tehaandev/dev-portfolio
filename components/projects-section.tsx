@@ -1,5 +1,6 @@
+import { FadeIn } from "@/components/FadeIn";
 import { SectionHeading } from "@/components/section-heading";
-import { ArrowUpRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -35,50 +36,56 @@ const projects = [
 
 export function ProjectsSection() {
   return (
-    <section id="work" className="mx-auto max-w-7xl px-6 md:px-10">
-      <SectionHeading index="03" label="Selected work">
-        Products shipped,{" "}
-        <em className="text-muted-foreground">and still standing.</em>
+    <section id="work" className="mx-auto max-w-6xl px-5 md:px-8">
+      <SectionHeading label="Selected work">
+        Products shipped.{" "}
+        <span className="text-muted-foreground">And still standing.</span>
       </SectionHeading>
 
-      <div className="space-y-24 md:space-y-36">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {projects.map((project, i) => (
-          <Link
+          <FadeIn
             key={project.id}
-            href={project.demoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group grid grid-cols-1 items-end gap-8 md:grid-cols-12 md:gap-10">
-            <div
-              className={`bg-card relative aspect-[16/10] overflow-hidden md:col-span-8 ${
-                i % 2 ? "md:order-last" : ""
-              }`}>
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                sizes="(min-width: 768px) 66vw, 100vw"
-                className="object-cover object-top grayscale-[0.6] transition-[transform,filter] duration-[1200ms] ease-(--ease-lux) group-hover:scale-[1.03] group-hover:grayscale-0"
-              />
-            </div>
-
-            <div className="md:col-span-4">
-              <p className="eyebrow mb-6 flex justify-between">
-                <span>No. 0{i + 1}</span>
-                <span>{project.category}</span>
-              </p>
-              <h3 className="flex items-start justify-between gap-4 font-serif text-4xl leading-none md:text-5xl">
-                {project.title}
-                <ArrowUpRight
-                  className="text-muted-foreground group-hover:text-foreground mt-1 h-6 w-6 shrink-0 transition-[transform,color] duration-500 ease-(--ease-lux) group-hover:translate-x-1 group-hover:-translate-y-1"
-                  strokeWidth={1.25}
+            delay={i === 0 ? 0 : (i - 1) * 60}
+            className={i === 0 ? "md:col-span-2" : ""}>
+            <Link
+              href={project.demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="surface press group flex h-full flex-col overflow-hidden">
+              <div className="p-7 md:p-9">
+                <p className="text-muted-foreground text-sm font-medium">
+                  {project.category}
+                </p>
+                <h3 className="mt-1.5 text-3xl font-semibold tracking-[-0.028em] md:text-4xl">
+                  {project.title}
+                </h3>
+                <p className="text-muted-foreground mt-3 max-w-xl text-[0.9375rem] leading-relaxed">
+                  {project.description}
+                </p>
+                <span className="link mt-4 inline-flex items-center gap-0.5 text-[0.9375rem] group-hover:underline">
+                  Visit site
+                  <ChevronRight className="h-4 w-4 transition-transform duration-300 ease-(--ease-spring) group-hover:translate-x-0.5" />
+                </span>
+              </div>
+              <div
+                className={`bg-muted relative mx-7 mt-auto overflow-hidden rounded-t-2xl shadow-[0_0_0_1px_var(--border)] md:mx-9 ${
+                  i === 0 ? "aspect-[16/8]" : "aspect-[16/10]"
+                }`}>
+                <Image
+                  src={project.image}
+                  alt={`${project.title} screenshot`}
+                  fill
+                  sizes={
+                    i === 0
+                      ? "(min-width: 1152px) 1088px, 100vw"
+                      : "(min-width: 768px) 50vw, 100vw"
+                  }
+                  className="object-cover object-top transition-transform duration-700 ease-(--ease-spring) group-hover:scale-[1.02]"
                 />
-              </h3>
-              <p className="text-muted-foreground mt-6 text-[0.9375rem] leading-relaxed">
-                {project.description}
-              </p>
-            </div>
-          </Link>
+              </div>
+            </Link>
+          </FadeIn>
         ))}
       </div>
     </section>
