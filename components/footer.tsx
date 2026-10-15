@@ -12,8 +12,8 @@ export function Footer() {
     <footer className="mx-auto max-w-6xl px-5 md:px-8">
       <div className="border-border text-muted-foreground flex flex-col gap-4 border-t py-8 text-[0.8125rem] md:flex-row md:items-center md:justify-between">
         <p>
-          © {dayjs().year().toString()} Tehaan Perera. Designed &amp; built
-          in-house.
+          {`© ${dayjs().year().toString()} Tehaan Perera. Designed &amp; built
+          in-house.`}
         </p>
         <nav className="flex gap-6">
           {links.map((link) => (
