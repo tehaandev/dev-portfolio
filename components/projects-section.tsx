@@ -7,21 +7,21 @@ import Link from "next/link";
 const projects = [
   {
     id: 1,
-    title: "Alchemist",
-    category: "AI · Research tooling",
-    description:
-      "A research-focused RAG application enabling natural language querying of academic PDFs using LLMs and vector search for grounded, citation-based answers.",
-    image: "/projects/alchemist.png",
-    demoUrl: "https://alchemist-rho.vercel.app/",
-  },
-  {
-    id: 2,
     title: "Fosterli",
     category: "SaaS · Social care",
     description:
       "A foster care CRM with dynamic assessment flows, role-based access, and collaboration between applicants, assessors, and managers.",
     image: "/projects/fosterli.png",
     demoUrl: "https://fosterli.com",
+  },
+  {
+    id: 2,
+    title: "Alchemist",
+    category: "AI · Research tooling",
+    description:
+      "A research-focused RAG application enabling natural language querying of academic PDFs using LLMs and vector search for grounded, citation-based answers.",
+    image: "/projects/alchemist.png",
+    demoUrl: "https://alchemist-rho.vercel.app/",
   },
   {
     id: 3,
