@@ -3,6 +3,7 @@
 import { Moon, Sun } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useTheme } from "next-themes";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { flushSync } from "react-dom";
@@ -64,7 +65,8 @@ export function Header() {
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-5 md:px-8">
         <Link
           href="/"
-          className="press text-[1.0625rem] font-semibold tracking-[-0.02em]">
+          className="press flex items-center gap-2.5 text-[1.0625rem] font-semibold tracking-[-0.02em]">
+          <Image src="/favicon.svg" alt="" width={28} height={28} unoptimized />
           Tehaan Perera
         </Link>
 
