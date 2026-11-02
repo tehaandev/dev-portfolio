@@ -1,0 +1,11 @@
+{
+  "name": "dev-portfolio",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-10-01",
+  "send_email": [{ "name": "EMAIL" }],
+  "assets": {
+    "directory": "./out",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page"
+  }
+}

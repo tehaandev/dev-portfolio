@@ -5,7 +5,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { getPostBySlug, getAllPostSlugs } from "@/lib/posts";
+import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import { ChevronLeft } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -19,10 +19,9 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  const slugs = getAllPostSlugs();
-  return slugs.map((slug) => ({
-    slug,
-  }));
+  const posts = getAllPosts();
+  // output: "export" fails the build on an empty list; "_" has no post, so it 404s.
+  return posts.length ? posts.map(({ slug }) => ({ slug })) : [{ slug: "_" }];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

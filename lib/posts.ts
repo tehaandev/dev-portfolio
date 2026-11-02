@@ -8,6 +8,7 @@ import { Post, PostMetadata } from "@/types/blog";
 import { cache } from "react";
 
 const postsDirectory = path.join(process.cwd(), "_posts");
+const showDrafts = process.env.NODE_ENV === "development";
 
 // Cache the file system operations
 export const getAllPosts = cache((): Post[] => {
@@ -44,13 +45,7 @@ export const getAllPosts = cache((): Post[] => {
         content,
       };
     })
-    .filter((post) => {
-      const onlyPublished = process.env.NODE_ENV !== "development";
-      if (onlyPublished) {
-        return post.metadata.published !== false; // Only include published posts
-      }
-      return true; // Include all posts in development mode
-    }) // Only include published posts
+    .filter((post) => showDrafts || post.metadata.published)
     .sort((a, b) =>
       new Date(a.metadata.date) > new Date(b.metadata.date) ? -1 : 1
     );
@@ -69,6 +64,10 @@ export const getPostBySlug = cache(
 
       const fileContents = fs.readFileSync(fullPath, "utf8");
       const { data, content } = matter(fileContents);
+
+      if (!showDrafts && data.published === false) {
+        return null;
+      }
 
       // Process markdown to HTML
       const processedContent = await remark()
@@ -98,17 +97,6 @@ export const getPostBySlug = cache(
     }
   }
 );
-
-export const getAllPostSlugs = cache((): string[] => {
-  if (!fs.existsSync(postsDirectory)) {
-    return [];
-  }
-
-  const fileNames = fs.readdirSync(postsDirectory);
-  return fileNames
-    .filter((fileName) => fileName.endsWith(".md"))
-    .map((fileName) => fileName.replace(/\.md$/, ""));
-});
 
 export const getPostsByTag = cache((tag: string): Post[] => {
   const allPosts = getAllPosts();

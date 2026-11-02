@@ -1,6 +1,8 @@
 import { getAllPosts } from "@/lib/posts";
 import dayjs from "dayjs";
 
+export const dynamic = "force-static";
+
 export async function GET() {
   const BASE_URL = "https://www.tehaan.dev";
   const staticRoutes = [

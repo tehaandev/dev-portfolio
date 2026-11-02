@@ -3,7 +3,6 @@ import TransitionWrapper from "@/components/TransitionWrapper";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Toaster } from "@/components/ui/sonner";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -19,6 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.tehaan.dev"),
   title: "Tehaan Perera | Software Engineer",
   description:
     "Professional portfolio showcasing projects, skills, and experience in web development, programming, and technology solutions.",
@@ -98,7 +98,6 @@ export default function RootLayout({
           <TransitionWrapper>{children}</TransitionWrapper>
           <Footer />
         </ThemeProvider>
-        <SpeedInsights />
         {/* 
           Developed by Tehaan Perera
           Website: https://www.tehaan.dev
