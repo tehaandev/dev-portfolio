@@ -17,7 +17,7 @@ export function HeroSection() {
       <FadeIn>
         <div className="relative mx-auto h-24 w-24 overflow-hidden rounded-full shadow-[0_0_0_1px_var(--border)] md:h-28 md:w-28">
           <Image
-            src="/tp.jpg"
+            src="/tp.webp"
             alt="Portrait of Tehaan Perera"
             fill
             sizes="112px"

@@ -11,13 +11,13 @@ tags:
     "GDPR Compliance",
     "Freelance",
   ]
-cover: "/images/foster-care-crm/cover.png"
+cover: "/images/foster-care-crm/cover.webp"
 carousel:
   [
-    "/images/foster-care-crm/cover.png",
-    "/images/foster-care-crm/dashboard.png",
-    "/images/foster-care-crm/chat.png",
-    "/images/foster-care-crm/form.png",
+    "/images/foster-care-crm/cover.webp",
+    "/images/foster-care-crm/dashboard.webp",
+    "/images/foster-care-crm/chat.webp",
+    "/images/foster-care-crm/form.webp",
   ]
 author: "Tehaan Perera"
 published: false

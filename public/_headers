@@ -1,2 +1,5 @@
 /api/sitemap
   Content-Type: application/xml
+
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable

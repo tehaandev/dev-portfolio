@@ -11,7 +11,7 @@ const projects = [
     category: "SaaS · Social care",
     description:
       "A foster care CRM with dynamic assessment flows, role-based access, and collaboration between applicants, assessors, and managers.",
-    image: "/projects/fosterli.png",
+    image: "/projects/fosterli.webp",
     demoUrl: "https://fosterli.com",
   },
   {
@@ -20,7 +20,7 @@ const projects = [
     category: "AI · Research tooling",
     description:
       "A research-focused RAG application enabling natural language querying of academic PDFs using LLMs and vector search for grounded, citation-based answers.",
-    image: "/projects/alchemist.png",
+    image: "/projects/alchemist.webp",
     demoUrl: "https://alchemist-rho.vercel.app/",
   },
   {
@@ -29,7 +29,7 @@ const projects = [
     category: "Platform · Legal research",
     description:
       "A legal research platform for Sri Lanka, enabling fast access to laws, linked judgments, and automated cross-references.",
-    image: "/projects/legal-database.png",
+    image: "/projects/legal-database.webp",
     demoUrl: "https://thelegaldatabase.com",
   },
 ];
