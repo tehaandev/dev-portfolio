@@ -30,9 +30,12 @@ const worker = {
     const email = formData?.get("email");
     const message = formData?.get("message");
     if (
-      typeof name !== "string" || !name.trim() ||
-      typeof email !== "string" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
-      typeof message !== "string" || !message.trim()
+      typeof name !== "string" ||
+      !name.trim() ||
+      typeof email !== "string" ||
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
+      typeof message !== "string" ||
+      !message.trim()
     ) {
       return new Response("Invalid form data", { status: 400 });
     }
