@@ -20,18 +20,17 @@ This is a **Next.js 16 App Router** portfolio site with TypeScript, React 19, an
 
 ### Key directories
 
-- `app/` — Next.js App Router pages and layouts. Home page lazily loads section components with Suspense skeletons.
+- `app/` — Next.js App Router pages and layouts.
 - `components/` — All React components. `components/ui/` contains shadcn/ui primitives.
-- `features/` — `form-submit-query.ts` (React Query mutation that posts to `/api/contact`).
 - `worker/` — Cloudflare Worker: handles `POST /api/contact` (emails the message via the Cloudflare `send_email` binding) and serves everything else from `out/`.
-- `lib/` — Utilities: `posts.ts` (blog file system + caching), `query.ts` (QueryClient), `use-intersection-observer.ts` (scroll animation hook).
+- `lib/` — Utilities: `posts.ts` (blog file system + caching), `use-intersection-observer.ts` (scroll animation hook).
 - `_posts/` — Markdown blog posts with YAML frontmatter (`title`, `date`, `excerpt`, `tags`, `author`, `published`). Set `published: false` to exclude a post from production builds; it still shows in `npm run dev`.
 
 ### Data flows
 
 **Blog**: Markdown files in `_posts/` → parsed by `gray-matter` + `remark` → rendered in `app/blog/[slug]/page.tsx`. Blog post loading uses React's `cache()` for deduplication.
 
-**Contact form**: Client validation → `POST /api/contact` (`worker/index.ts`) → Cloudflare `send_email` → React Query mutation manages async state → Sonner toast on success/failure.
+**Contact form**: Client validation → `POST /api/contact` (`worker/index.ts`) → Cloudflare `send_email` → Sonner toast on success/failure.
 
 ### Styling
 
@@ -39,7 +38,7 @@ Tailwind CSS v4 using the `@tailwindcss/postcss` plugin (not the classic `tailwi
 
 ### Animations
 
-`FadeIn.tsx` wraps content with a Motion (Framer Motion) `whileInView` fade+slide animation. The `use-intersection-observer.ts` hook provides a lower-level intersection observer that freezes once visible.
+Animations are CSS only, so content paints before JS loads. Above the fold, use the `rise` utility from `globals.css` directly (see `hero-section.tsx`). Below the fold, wrap content in `FadeIn.tsx`, which hides it until `use-intersection-observer.ts` reports it in view. Never ship above-the-fold content hidden behind JS.
 
 ### Environment variables required
 

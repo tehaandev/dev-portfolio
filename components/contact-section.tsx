@@ -2,7 +2,6 @@
 
 import { FadeIn } from "@/components/FadeIn";
 import { SectionHeading } from "@/components/section-heading";
-import { useFormSubmitAction } from "@/features/form-submit-query";
 import { CheckCircle2, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import type React from "react";
@@ -59,7 +58,6 @@ export function ContactSection() {
     }
   };
 
-  const formSubmitMutation = useFormSubmitAction();
   const handleSubmit = async (e: React.FormEvent) => {
     setIsSubmitted(false);
     setErrors({});
@@ -71,7 +69,11 @@ export function ContactSection() {
       formData.append("email", formState.email);
       formData.append("message", formState.message);
       setIsSubmitting(true);
-      await formSubmitMutation.mutateAsync(formData);
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        body: formData,
+      });
+      if (!res.ok) throw new Error("Failed to submit form");
       setIsSubmitting(false);
       setIsSubmitted(true);
       toast.success("Message sent successfully!");

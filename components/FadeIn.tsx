@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useIntersectionObserver } from "@/lib/use-intersection-observer";
 
 interface FadeInProps {
   children: React.ReactNode;
@@ -8,21 +8,20 @@ interface FadeInProps {
   className?: string;
 }
 
-// Critically damped spring (no overshoot) — content settles in, it doesn't bounce
+// For below-the-fold content: hidden until hydrated, so never use above the
+// fold (the hero uses the `rise` class directly, which paints without JS).
 export function FadeIn({ children, delay = 0, className = "" }: FadeInProps) {
+  const { ref, hasBeenVisible } = useIntersectionObserver({
+    threshold: 0.15,
+    rootMargin: "0px",
+  });
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{
-        type: "spring",
-        bounce: 0,
-        duration: 0.8,
-        delay: delay / 1000,
-      }}
-      className={className}>
+    <div
+      ref={ref}
+      className={`${hasBeenVisible ? "rise" : "opacity-0"} ${className}`}
+      style={{ animationDelay: `${delay}ms` }}>
       {children}
-    </motion.div>
+    </div>
   );
 }

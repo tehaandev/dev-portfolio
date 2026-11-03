@@ -1,4 +1,3 @@
-import { FadeIn } from "@/components/FadeIn";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,7 +13,7 @@ export function HeroSection() {
     <section
       id="hero"
       className="mx-auto flex min-h-svh max-w-6xl flex-col items-center justify-center px-5 pt-28 pb-16 text-center md:px-8">
-      <FadeIn>
+      <div className="rise">
         <div className="relative mx-auto h-24 w-24 overflow-hidden rounded-full shadow-[0_0_0_1px_var(--border)] md:h-28 md:w-28">
           <Image
             src="/tp.webp"
@@ -25,16 +24,16 @@ export function HeroSection() {
             priority
           />
         </div>
-      </FadeIn>
+      </div>
 
-      <FadeIn delay={60}>
+      <div className="rise" style={{ animationDelay: "60ms" }}>
         <p className="eyebrow mt-8">Full-Stack Software Engineer</p>
         <h1 className="mx-auto mt-3 max-w-4xl text-[2.75rem] leading-[1.05] font-semibold tracking-[-0.035em] text-balance sm:text-6xl lg:text-[5rem]">
           Software, built with <span className="text-wine">precision.</span>
         </h1>
-      </FadeIn>
+      </div>
 
-      <FadeIn delay={120}>
+      <div className="rise" style={{ animationDelay: "120ms" }}>
         <p className="text-muted-foreground mx-auto mt-6 max-w-xl text-lg leading-relaxed text-pretty md:text-xl">
           I&apos;m Tehaan, a full-stack engineer crafting fast, considered web
           applications with React, Node.js and the cloud.
@@ -53,9 +52,11 @@ export function HeroSection() {
             <ChevronRight className="-mr-1 h-4 w-4" />
           </Link>
         </div>
-      </FadeIn>
+      </div>
 
-      <FadeIn delay={180} className="mt-20 w-full md:mt-24">
+      <div
+        className="rise mt-20 w-full md:mt-24"
+        style={{ animationDelay: "180ms" }}>
         <dl className="surface mx-auto grid max-w-4xl grid-cols-1 text-left sm:grid-cols-3">
           {facts.map((fact) => (
             <div
@@ -70,7 +71,7 @@ export function HeroSection() {
             </div>
           ))}
         </dl>
-      </FadeIn>
+      </div>
     </section>
   );
 }

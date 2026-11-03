@@ -1,8 +1,7 @@
 "use client";
 
-import { MotionConfig, motion } from "motion/react";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 
 export default function TransitionWrapper({
   children,
@@ -10,16 +9,15 @@ export default function TransitionWrapper({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
+  // Fade on navigation only: fading the first load would delay its first paint
+  const [entryPath] = useState(pathname);
   return (
-    // "user" honours prefers-reduced-motion: transforms are dropped, opacity fades stay
-    <MotionConfig reducedMotion="user">
-      <motion.div
-        key={pathname}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}>
-        {children}
-      </motion.div>
-    </MotionConfig>
+    <div
+      key={pathname}
+      className={
+        pathname === entryPath ? undefined : "animate-[fade_0.3s_ease-out]"
+      }>
+      {children}
+    </div>
   );
 }

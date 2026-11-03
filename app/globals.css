@@ -117,6 +117,28 @@
   }
 }
 
+/* Entrance animations live in CSS so content paints before any JS loads */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@utility rise {
+  animation: rise 0.8s var(--ease-spring) both;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation-name: fade;
+  }
+}
+
 /* Theme switch cross-fades instead of flashing (see ThemeToggle) */
 ::view-transition-old(root),
 ::view-transition-new(root) {
